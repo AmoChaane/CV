@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #5D5C5C;
+    font-family: 'Asap', sans-serif;
+    /* font-family: 'Bodoni Moda', serif; */
+    /* font-family: 'Cormorant Garamond', serif; */
+    /* font-family: 'Teko', sans-serif; */
+    /* border: 1px solid red; */
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* #root {
+    min-height: 100vh;
+} */
+
+.container {
+    /* border: 1px solid lime; */
+    /* width: 100vw; */
+    /* height: 100vh; */
+    display: grid;
+    grid-template-columns: 1.2fr 3fr;
+    /* min-height: 100vh; */
+    /* position: relative; */
+    /* overflow-y: scroll; */
+}
+
+
+.firstName, .lastName {
+    /* font-family: 'Bodoni Moda', serif; */
+    font-size: 2.9em;
+    letter-spacing: -0.02em;
+}
+
+.sideInfo {
+    /* border: 1px solid blue; */
+    /* background-color: #C8C7C4; */
+    background-color: rgba(203,199,198,0.4);
+    padding: 15%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-rows: auto; */
+    row-gap: 60px;    
+}
+
+/* .sideInfo-innerContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 60px;
+} */
+
+.NameAndRole {
+    /* border: 1px solid red;  */
+}
+
+.education, .skills { 
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.education-title {
+    font-size: 1.6em;
+    letter-spacing: 0.2em;
+}
+
+.education-slots {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.mainInfo {
+    background-color: rgb(231,229,232,0.4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 70px;  
+    padding-bottom: 10%;
+}
+
+/* .mainInfo-innerContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+} */
+
+.skills {
+    /* font-size: 1.1em; */
+    /* border: 1px solid red; */
+}
+
+.skills-title, h3 {
+    font-size: 1.6em;
+    letter-spacing: 0.2em;
+}
+
+.address {
+    font-size: 1.1em;
+    display: flex;
+    column-gap: 5px;
+}
+
+p {
+    font-size: 1.1em
+}
+
+.skills-points {
+    position: relative;
+    left: 7%;
+    /* border: 1px dotted black; */
+    /* padding: 10% 0% 10% 13%; */
+}
+
+li {
+    font-size: 1.1em;
+}
+
+.fa-location-dot {
+    color: #c8c7c4;
+}
+
+.address-icon-holder {
+    /* border: 1px solid lime; */
+    background-color: #5D5C5C;
+    display: flex;
+    align-items: center;
+    padding: 0 0.15em 0em 0.15em;
+    /* border-radius: 15px; */
+}
+
+.personal-info {
+    width: 100%;
+    height: 45vh;
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 30px;
+}
+
+.image {
+    /* border: 1px solid #5D5C5C; */
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    filter: gray;
+    filter: grayscale(100%);
+    /* width: 100px;
+    height: 100px; */
+    /* border-radius: 0 0 20px 20px; */
+}
+
+.info {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 15%;
+    row-gap: 5%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 10%;
+}
+
+.info div {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    row-gap: 20px;
+    /* grid-template-rows: auto; */
+    /* align-items: center; */
+}
+
+.info div .f {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info div .i {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+
+.summary {
+    display: grid;
+    /* flex-direction: column; */
+    /* row-gap: 13%; */
+}
+
+.experience-info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 9px;
+}
+
+.experience-info-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+.experience-info div{
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+}
+
+.experience-info div div{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #5D5C5C;
+}
+
+.experience-points {
+    margin-top: 2%;
+    padding-left: 8%;
+    max-width: 100%;
+}
+
+.icon-holder {
+    display: flex;
+    column-gap: 10px;
+}
