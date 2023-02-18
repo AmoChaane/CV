@@ -6,15 +6,18 @@ export default class Address extends React.Component {
     }
 
     render() {
-        return <div className="address">
+        return <div className="address section">
+            <div className="overlay">
+                <p onClick={event => console.log(event)}>EDIT</p>
+            </div>
             <div className="address-icon-holder">
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
             </div>
             <div>
-                <p className="street">280 Drawwer Crescent</p>
-                <p className="Suburb">Derdepoort</p>
-                <p className="City">Pretoria</p>
-                <p className="country">South Africa</p>
+                <p className="street">{this.props.address.street}</p>
+                <p className="Suburb">{this.props.address.suburb}</p>
+                <p className="City">{this.props.address.city}</p>
+                <p className="country">{this.props.address.country}</p>
             </div>
         </div>
     }

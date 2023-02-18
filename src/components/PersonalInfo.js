@@ -12,13 +12,16 @@ export default class PersonalInfo extends React.Component {
                 <img src={pic} alt="Profile Picture"/>
             </div>
             <div className="info">
-                <div>
-                    <div className="f"><i class="fa-solid fa-envelope" style={{color: "#5D5C5C"}}></i></div>
-                    <div className="i"><p className="email">amogelangchaane200@gmail.com</p></div>
-                    <div className="f"><i class="fa-solid fa-mobile" style={{color: "#5D5C5C"}}></i></div>
-                    <div className="i"><p className="number">079 998 2723</p></div>
-                    <div className="f"><i class="fa-solid fa-globe" style={{color: "#5D5C5C"}}></i></div>
-                    <div className="i"><p className="website">www.amochaane.com</p></div>
+                <div className="section">
+                    <div className="overlay">
+                        <p>EDIT</p>
+                    </div>
+                    <div className="f"><i className="fa-solid fa-envelope" style={{color: "#5D5C5C"}}></i></div>
+                    <div className="i"><p className="email">{this.props.state.email}</p></div>
+                    <div className="f"><i className="fa-solid fa-mobile" style={{color: "#5D5C5C"}}></i></div>
+                    <div className="i"><p className="number">{this.props.state.number}</p></div>
+                    <div className="f"><i className="fa-solid fa-globe" style={{color: "#5D5C5C"}}></i></div>
+                    <div className="i"><p className="website">{this.props.state.website}</p></div>
                 </div>
             </div>
         </div>

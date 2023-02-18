@@ -10,9 +10,9 @@ export default class MainInfo extends React.Component {
 
     render() {
         return <div className="mainInfo">
-            <PersonalInfo />
-            <Summary />
-            <Experience />
+            <PersonalInfo state={this.props.state} />
+            <Summary profile={this.props.state.profile} />
+            <Experience experience={this.props.state.experience}/>
         </div>
     }
 }

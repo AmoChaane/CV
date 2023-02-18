@@ -31,7 +31,7 @@ body {
 
 
 .firstName, .lastName {
-    font-size: 2.9em;
+    font-size: 2.6em;
     letter-spacing: .04em;
 }
 
@@ -54,7 +54,7 @@ body {
     row-gap: 60px;
 } */
 
-.NameAndRole div {
+.NameAndRole .role-line {
     display: flex;
     column-gap: 10px;
     align-items: center;
@@ -109,9 +109,11 @@ body {
 }
 
 .address {
+    /* position: relative; */
     font-size: 1.1em;
     display: flex;
     column-gap: 5px;
+    transition: all 1s linear;
 }
 
 p {
@@ -181,7 +183,7 @@ img {
     padding-left: 10%;
 }
 
-.info div {
+.info .section {
     display: grid;
     grid-template-columns: 100px 1fr;
     row-gap: 20px;
@@ -208,6 +210,24 @@ img {
     /* row-gap: 13%; */
 }
 
+.summary div div {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.summary div div p {
+    font-weight: 900;
+    font-size: 1.1em;
+    text-decoration: underline;
+    display: none;
+    cursor: pointer;
+}
+
+.summary div div:hover p {
+    display: flex;
+}
+
 .experience-info {
     display: flex;
     flex-direction: column;
@@ -226,7 +246,7 @@ img {
     align-items: center;
 }
 
-.experience-info div div{
+.experience-info div .circle{
     width: 5px;
     height: 5px;
     border-radius: 50%;
@@ -242,4 +262,32 @@ img {
 .icon-holder {
     display: flex;
     column-gap: 10px;
+}
+
+.section {
+    position: relative;
+    transition: all .5s linear;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200, 199, 196, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s linear;
+
+}
+
+.section:hover .overlay {
+    display: flex;
+}
+
+.overlay p{
+    font-weight: 900;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1.1em;
 }
