@@ -131,6 +131,12 @@ class App extends React.Component {
   }
 
   click(array) {
+    this.setState(prev => {
+      const arr = prev.info.map(i => {
+        return {...i, show: false}
+      });
+      return {...prev, info: arr}
+    }, console.log(this.state.info));
     array.forEach(i => {
       this.setState(prev => {
         const arr = prev.info;
