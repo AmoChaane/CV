@@ -2,6 +2,7 @@ import React from "react";
 import SideInfo from "./components/SideInfo"
 import MainInfo from "./components/MainInfo"
 import Form from "./components/Form"
+import uniqid from 'uniqid';
 import "./style.css";
 // import pic1 from "./images/pexels-karolina-grabowska-4466540.jpg"
 // import pic2 from "./images/pexels-mikhail-nilov-6707631.jpg"
@@ -40,6 +41,18 @@ class App extends React.Component {
         experienceEndDate: "2023",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
         experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
+      }],
+      formData: [{
+        type: "text",
+        name: "country",
+        placeholder: "",
+        value: ""
+      },
+      {
+        type: "text",
+        name: "street",
+        placeholder: "",
+        value: ""
       }]
     }
   }
@@ -49,6 +62,7 @@ class App extends React.Component {
       <div className="container">
         <SideInfo state={this.state}/>
         <MainInfo state={this.state}/>
+        {/* <Form data={this.state.formData}/> */}
       </div>
     )
   }
