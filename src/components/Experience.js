@@ -1,5 +1,6 @@
 import React from "react"
 import ExperienceInfo from "./ExperienceInfo";
+import uniqid from 'uniqid';
 
 export default class Experience extends React.Component {
     constructor() {
@@ -7,8 +8,8 @@ export default class Experience extends React.Component {
     }
 
     render() {
-        const experience = this.props.experience.map(i => <ExperienceInfo info={i}/>);
-        const points = this.props.exper
+        const experience = this.props.experience.map(i => <ExperienceInfo info={i} key={uniqid()}/>);
+        // const points = this.props.exper
 
         return <div className="experience">
             <div style={{marginBottom: "3%"}}>

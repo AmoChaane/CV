@@ -1,4 +1,5 @@
 import React from "react";
+import uniqid from 'uniqid';
 
 export default class ExperienceInfo extends React.Component {
     constructor() {
@@ -6,7 +7,7 @@ export default class ExperienceInfo extends React.Component {
     }
 
     render() {
-        const points = this.props.info.experiencePoints.map(i => <li>{i}</li>);
+        const points = this.props.info.experiencePoints.map(i => <li key={uniqid()}>{i}</li>);
         return (
             <div className="experience-info"  style={{padding: "0 5%"}}>
                 <h4>{this.props.info.title.toUpperCase()}</h4>

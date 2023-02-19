@@ -1,4 +1,5 @@
 import React from "react"
+import uniqid from 'uniqid';
 
 export default class Skills extends React.Component {
     constructor() {
@@ -6,7 +7,7 @@ export default class Skills extends React.Component {
     }
 
     render() {
-        const skills = this.props.skills.map(i => <li>{i}</li>);
+        const skills = this.props.skills.map(i => <li key={uniqid()}>{i}</li>);
         return <div className="skills">
             <span>
                 <h3 className="skills-title">SKILLS</h3>

@@ -1,5 +1,6 @@
 import React from "react"
 import EducationInfo from "./EducationInfo"
+import uniqid from 'uniqid';
 
 export default class Education extends React.Component {
     constructor(props) {
@@ -7,7 +8,7 @@ export default class Education extends React.Component {
     }
 
     render() {
-        const education = this.props.education.map(i => <EducationInfo info={i}/>);
+        const education = this.props.education.map(i => <EducationInfo info={i} key={uniqid()}/>);
         return <div className="education">
             <span>
                 <h3 className="education-title">EDUCATION</h3>

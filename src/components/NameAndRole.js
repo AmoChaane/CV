@@ -8,13 +8,15 @@ export default class NameAndRole extends React.Component {
     render() {
         return <div className="NameAndRole section">
             <div className="overlay">
-                <p>EDIT</p>
+                <p onClick={() => {
+                    this.props.click(['firstName', "lastName", 'role']);
+                }}>EDIT</p>
             </div>
-            <h1 className="firstName">{this.props.state.names.firstName.toUpperCase()}</h1>
-            <h1 className="lastName">{this.props.state.names.lastName.toUpperCase()}</h1>
+            <h1 className="firstName">{this.props.text('firstName').toUpperCase()}</h1>
+            <h1 className="lastName">{this.props.text('lastName').toUpperCase()}</h1>
             <div className="role-line">
                 <div></div>
-                <h4 className="role">{this.props.state.role.toUpperCase()}</h4>
+                <h4 className="role">{this.props.text('role').toUpperCase()}</h4>
             </div>
         </div>
     }

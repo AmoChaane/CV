@@ -11,22 +11,74 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      address: {
-        street: "280 Drawwer Crescent",
-        suburb: "Derdepoort",
-        city: "Pretoria",
-        country: "South Africa"
+      info: [{
+        text: "280 Drawwer Crescent",
+        type: "text",
+        name: "street",
+        show: false
       },
-      names: {
-        firstName: "Amogelang",
-        lastName: "Chaane"
+      {
+        text: "Derdepoort",
+        type: "text",
+        name: "suburb",
+        show: false
       },
-      role: "Web Developer",
+      {
+        text: "Pretoria",
+        type: "text",
+        name: "city",
+        show: false
+      },
+      {
+        text: "South Africa",
+        type: "text",
+        name: "country",
+        show: false
+      },
+      {
+        text: "Amogelang",
+        type: "text",
+        name: "firstName",
+        show: false
+      },
+      {
+        text: "Chaane",
+        type: "text",
+        name: "lastName",
+        show: false
+      },
+      {
+        text: "Web Developer",
+        type: "text",
+        name: "role",
+        show: false
+      },
+      {
+        text: "amogelangchaane200@gmail.com",
+        type: "email",
+        name: "email",
+        show: false
+      },
+      {
+        text: "079 998 2723",
+        type: "tel",
+        name: "number",
+        show: false
+      },
+      {
+        text: "www.amochaane.com",
+        type: "text",
+        name: "website",
+        show: false
+      },
+      {
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
+        type: "text",
+        name: "profile",
+        show: false
+      }
+    ],
       image: "",
-      email: "amogelangchaane200@gmail.com",
-      number: "079 998 2723",
-      website: "www.amochaane.com",
-      profile: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
       education: [{
         course: 'BSc IT',
         university: "Richfield College",
@@ -42,27 +94,67 @@ class App extends React.Component {
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
         experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
       }],
-      formData: [{
-        type: "text",
-        name: "country",
-        placeholder: "",
-        value: ""
-      },
-      {
-        type: "text",
-        name: "street",
-        placeholder: "",
-        value: ""
-      }]
+      show: false
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.text = this.text.bind(this);
+    this.click = this.click.bind(this);
+    this.submit = this.submit.bind(this);
+  }
+
+  handleChange(event, id) {
+    const {type, name, value} = event.target;
+    // this.setState({
+    //   [name]: {
+    //     text: value
+    //   }
+    // });
+ 
+
+
+    this.setState(prev => {
+      const arr = prev.info;
+      const index = arr.findIndex((elem) => {
+        return elem.name == id
+      })
+      arr[index] = {...arr[index], text: value}
+      return {...prev, info: arr}
+    }, console.log(this.state.info));
+  }
+
+  text(text) {
+    const index = this.state.info.findIndex(elem => {
+        return elem.name == text
+    });
+    return this.state.info[index].text
+  }
+
+  click(array) {
+    array.forEach(i => {
+      this.setState(prev => {
+        const arr = prev.info;
+        const index = arr.findIndex((elem) => {
+          return elem.name == i
+        })
+        arr[index] = {...arr[index], show: true}
+        return {...prev, info: arr}
+      }, () => {
+        this.setState({show: true})
+      });
+    });
+  }
+
+  submit() {
+    this.setState({show: false});
   }
 
   render() {
     return (
       <div className="container">
-        <SideInfo state={this.state}/>
-        <MainInfo state={this.state}/>
-        {/* <Form data={this.state.formData}/> */}
+        <SideInfo state={this.state} text={this.text} click={this.click}/>
+        <MainInfo state={this.state} text={this.text} click={this.click}/>
+        {this.state.show && <Form data={this.state.info} handleChange={this.handleChange} state={this.state} text={this.text} click={this.click} submit={this.submit}/>}
       </div>
     )
   }

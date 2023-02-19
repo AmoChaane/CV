@@ -7,21 +7,29 @@ export default class PersonalInfo extends React.Component {
     }
 
     render() {
+        const styles = 
+        {
+            fontWeight: "900", 
+            textDecoration: "underline", 
+            fontSize: "1.1em", 
+            cursor: "pointer"
+        };
+
         return <div className="personal-info">
             <div className="image">
                 <img src={pic} alt="Profile Picture"/>
             </div>
             <div className="info">
                 <div className="section">
-                    <div className="overlay">
-                        <p>EDIT</p>
-                    </div>
+                    <p className="overlay" style={styles} onClick={() => {
+                        this.props.click(['email', "number", 'website']);
+                    }}>EDIT</p>
                     <div className="f"><i className="fa-solid fa-envelope" style={{color: "#5D5C5C"}}></i></div>
-                    <div className="i"><p className="email">{this.props.state.email}</p></div>
+                    <div className="i"><p className="email">{this.props.text('email')}</p></div>
                     <div className="f"><i className="fa-solid fa-mobile" style={{color: "#5D5C5C"}}></i></div>
-                    <div className="i"><p className="number">{this.props.state.number}</p></div>
+                    <div className="i"><p className="number">{this.props.text('number')}</p></div>
                     <div className="f"><i className="fa-solid fa-globe" style={{color: "#5D5C5C"}}></i></div>
-                    <div className="i"><p className="website">{this.props.state.website}</p></div>
+                    <div className="i"><p className="website">{this.props.text('website')}</p></div>
                 </div>
             </div>
         </div>

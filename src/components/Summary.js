@@ -10,11 +10,13 @@ export default class Summary extends React.Component {
             <div style={{marginBottom: "3%"}}>
                 <div>
                     <h3 style={{paddingLeft: "5%"}}>PROFILE</h3>
-                    <p>EDIT</p>
+                    <p onClick={() => {
+                        this.props.click(['profile']);
+                    }}>EDIT</p>
                 </div>
                 <div style={{height: "1px", width: "25%", backgroundColor: "#5D5C5C", marginTop: "10px"}}></div>
             </div>
-            <p style={{padding: "0 5%"}}>{this.props.profile}
+            <p style={{padding: "0 5%"}}>{this.props.text('profile')}
             </p>
             
         </div>
