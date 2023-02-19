@@ -11,7 +11,7 @@ export default class Form extends React.Component {
         const rest = str.slice(1).toLowerCase();
         return first + rest;
     }
-
+    
     render() {
         const inputs = this.props.data.map(i => {
             if(i.show) {
@@ -22,20 +22,20 @@ export default class Form extends React.Component {
                             i.name == "profile" ? 
                             <textarea 
                                 name={i.name} 
-                                id={i.name} 
+                                // id={i.name} 
                                 value={this.props.text(i.name)} 
                                 onChange={(event) => this.props.handleChange(event, i.name)} 
-                                key={uniqid()}>
+                                key={i.id}>
                             </textarea> 
 
                             :
-
+                            
                             <input type={i.type} 
                             name={i.name} 
-                            id={i.name} 
+                            // id={i.name} 
                             value={this.props.text(i.name)} 
                             onChange={(event) => this.props.handleChange(event, i.name)} 
-                            key={uniqid()}/>
+                            key={i.id}/>
                         }
                         
                     </div>
@@ -52,7 +52,7 @@ export default class Form extends React.Component {
                     </div>
                     {inputs}
                     <div className="buttons">
-                        <button onClick={this.props.submit}>Submit</button>
+                        <button onClick={this.props.submit}>Close Edit</button>
                     </div>
                 </div>
             </div>

@@ -15,67 +15,78 @@ class App extends React.Component {
         text: "280 Drawwer Crescent",
         type: "text",
         name: "street",
-        show: false
+        show: false,
+        id: "street"
       },
       {
         text: "Derdepoort",
         type: "text",
         name: "suburb",
-        show: false
+        show: false,
+        id: "suburb"
       },
       {
         text: "Pretoria",
         type: "text",
         name: "city",
-        show: false
+        show: false,
+        id: "city"
       },
       {
         text: "South Africa",
         type: "text",
         name: "country",
-        show: false
+        show: false,
+        id: "country"
       },
       {
         text: "Amogelang",
         type: "text",
         name: "firstName",
-        show: false
+        show: false,
+        id: "firstName"
       },
       {
         text: "Chaane",
         type: "text",
         name: "lastName",
-        show: false
+        show: false,
+        id: "lastName"
       },
       {
         text: "Web Developer",
         type: "text",
         name: "role",
-        show: false
+        show: false,
+        id: "role"
       },
       {
         text: "amogelangchaane200@gmail.com",
         type: "email",
         name: "email",
-        show: false
+        show: false,
+        id: "email"
       },
       {
         text: "079 998 2723",
         type: "tel",
         name: "number",
-        show: false
+        show: false,
+        id: "number"
       },
       {
         text: "www.amochaane.com",
         type: "text",
         name: "website",
-        show: false
+        show: false,
+        id: "website"
       },
       {
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
         type: "text",
         name: "profile",
-        show: false
+        show: false,
+        id: "profile"
       }
     ],
       image: "",
