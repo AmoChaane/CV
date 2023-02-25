@@ -12,9 +12,10 @@ export default class Address extends React.Component {
                     this.props.click(['street', "suburb", 'city', 'country']);
                 }}>EDIT</p>
             </div>
-            <div className="address-icon-holder">
+            {/* <div className="address-icon-holder">
                 <i className="fa-solid fa-location-dot"></i>
-            </div>
+            </div> */}
+            <i className="fa-solid fa-location-dot"></i>
             <div>
                 <p className="street">{this.props.text('street')}</p>
                 <p className="Suburb">{this.props.text('suburb')}</p>

@@ -31,7 +31,7 @@ body {
 
 
 .firstName, .lastName {
-    font-size: 2.6em;
+    /* font-size: 2.6em; */
     letter-spacing: .04em;
 }
 
@@ -53,6 +53,10 @@ body {
     flex-direction: column;
     row-gap: 60px;
 } */
+
+.NameAndRole {
+    font-size: 1.1em;
+}
 
 .NameAndRole .role-line {
     display: flex;
@@ -81,6 +85,20 @@ body {
     display: flex;
     flex-direction: column;
     row-gap: 30px;
+}
+
+.education:hover .add {
+    display: block
+}
+
+.education-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.education-info:hover .fa-trash {
+    display: block;
 }
 
 .mainInfo {
@@ -127,12 +145,35 @@ p {
     padding-left: 7%;
 }
 
+.skills:hover .add {
+    display: block
+}
+
+.skills-points .add {
+    margin-top: 10px;
+    display: none;
+    cursor: pointer;
+    font-weight: 900
+}
+
+.education-slots .add {
+    display: none;
+    cursor: pointer;
+    font-weight: 900
+}
+
+
 li {
     font-size: 1.1em;
 }
 
 .fa-location-dot {
-    color: #c8c7c4;
+    color: #5D5C5C;
+    font-size: 2.3em;
+    position: relative;
+    right: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .address-icon-holder {
@@ -153,11 +194,29 @@ li {
     column-gap: 30px;
 }
 
+/* .image-holder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+} */
+
 .image {
     /* border: 1px solid #5D5C5C; */
     /* width: 100%; */
     height: 100%;
+    background-image: url("./images/pexels-clay-elliot-14634933.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: gray;
+    filter: grayscale(100%);
+    /* border: 1px solid #5D5C5C; */
+    border-radius: 0 0 10px 10px;
 
+}
+
+.image:hover {
+    border-radius: 10px;
 }
 
 img {
@@ -165,12 +224,12 @@ img {
     width: 100%; */
     max-width: 100%;
     height: 100%;
-    filter: gray;
-    filter: grayscale(100%);
+    /* filter: gray;
+    filter: grayscale(100%); */
     /* border-radius: 50%; */
     /* width: 100px;
     height: 100px; */
-    /* border-radius: 0 0 20px 20px; */
+    border-radius: 0 0 20px 20px;
 }
 
 .info {
@@ -189,6 +248,9 @@ img {
     display: grid;
     grid-template-columns: 100px 1fr;
     row-gap: 20px;
+    /* border: 1px solid #5D5C5C;
+    border-radius: 10px; */
+
     /* grid-template-rows: auto; */
     /* align-items: center; */
 }
@@ -226,7 +288,7 @@ img {
     cursor: pointer;
 }
 
-.summary div div:hover p {
+.summary:hover .profile-para {
     display: flex;
 }
 
@@ -236,19 +298,29 @@ img {
     row-gap: 9px;
 }
 
+.experience-buttons {
+    /* display: flex; */
+    display: none;
+}
+
+.experience-info:hover .experience-buttons {
+    display: flex;
+    column-gap: 20px;
+}
+
 .experience-info-container {
     display: flex;
     flex-direction: column;
     row-gap: 40px;
 }
 
-.experience-info div{
+.firstDiv, .secondDiv, .thirdDiv, .fourthDiv{
     display: flex;
     column-gap: 8px;
     align-items: center;
 }
 
-.experience-info div .circle{
+.circle{
     width: 5px;
     height: 5px;
     border-radius: 50%;
@@ -261,6 +333,15 @@ img {
     max-width: 100%;
 }
 
+.experience:hover .experience-p {
+    display: block;
+}
+
+.experience-p {
+    display: none;
+    cursor: pointer;
+}
+
 .icon-holder {
     display: flex;
     column-gap: 10px;
@@ -269,6 +350,7 @@ img {
 .section {
     position: relative;
     transition: all .5s linear;
+    /* z-index: 5; */
 }
 
 .overlay {
@@ -280,7 +362,7 @@ img {
     align-items: center;
     justify-content: center;
     transition: all 1s linear;
-
+    border-radius: 10px;
 }
 
 .section:hover .overlay {
@@ -302,12 +384,22 @@ img {
     left: 50%;
     border: 1px solid #5D5C5C;
     border-radius: 45px;
-    width: 30vw;
+    min-width: 35vw;
+    max-height: 99vh;
+    /* display: grid;
+    grid-template-rows: repeat(auto, 1fr);
+    /* flex-direction: column; */
+    /* row-gap: 50px; */
+    background: white;
+}
+
+.inputs {
     display: flex;
     flex-direction: column;
     row-gap: 30px;
-    background: white;
+    margin: 30px 0 30px 0;
 }
+
 
 .form-title {
     display: flex;
@@ -316,7 +408,7 @@ img {
 }
 
 
-.input-holder {
+.input-holder { 
     display: flex;
     flex-direction: column;
 }
@@ -328,8 +420,13 @@ img {
 }
 
 .input-holder input {
-    padding: 3%;
+    height: 45px;
     outline: none;
+    width: 90%;
+    padding-left: 2%;
+    /* border-radius: 10px; */
+    /* border: 1px solid #5D5C5C;
+    outline: none; */
 }
 
 #overlay {
@@ -352,6 +449,11 @@ textarea {
     outline: none;
 }
 
+.buttons {
+    display: flex;
+    column-gap: 10px;
+}
+
 button {
     padding: 3% 10%;
     border-radius: 10px;
@@ -367,4 +469,37 @@ button {
 
 button:hover {
     transform: scale(1.05);
+}
+
+.skill-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+    padding-right: 25%;
+}
+
+.fa-trash {
+    display: none;
+    cursor: pointer;
+}
+
+.skill-holder:hover .fa-trash {
+    display: block;
+}
+
+
+
+.summary-textarea {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+
+.p {
+    transition: all .2s linear;
+}
+
+.p:hover {
+    transform: scale(1.1);
 }
