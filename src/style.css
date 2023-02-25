@@ -355,7 +355,7 @@ img {
     cursor: pointer;
 }
 
-.summary:hover .profile-para {
+
 .summary:hover .profile-para {
     display: flex;
 }
@@ -392,14 +392,14 @@ img {
     row-gap: 40px;
 }
 
-.firstDiv, .secondDiv, .thirdDiv, .fourthDiv{
+
 .firstDiv, .secondDiv, .thirdDiv, .fourthDiv{
     display: flex;
     column-gap: 8px;
     align-items: center;
 }
 
-.circle{
+
 .circle{
     width: 5px;
     height: 5px;
@@ -499,7 +499,7 @@ img {
 }
 
 
-.input-holder { 
+
 .input-holder { 
     display: flex;
     flex-direction: column;
