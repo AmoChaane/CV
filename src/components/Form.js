@@ -66,7 +66,9 @@ export default class Form extends React.Component {
                         <h1 style={{textAlign: "center"}}>EDIT</h1>
                         <hr />
                     </div>
-                    {inputs}
+                    <div className="inputs">
+                        {inputs}
+                    </div>
                     {/* {this.props.state.skillBoxShow && input2} */}
                     {
                         // !this.props.state.skillAdded && 

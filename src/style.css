@@ -384,11 +384,21 @@ img {
     left: 50%;
     border: 1px solid #5D5C5C;
     border-radius: 45px;
-    width: 30vw;
-    display: flex;
-    flex-direction: column;
-    row-gap: 30px;
+    width: 35vw;
+    max-height: 95vh;
+    /* display: grid;
+    grid-template-rows: repeat(auto, 1fr);
+    /* flex-direction: column; */
+    /* row-gap: 50px; */
     background: white;
+}
+
+.inputs {
+    display: grid;
+    grid-template-rows: repeat(auto, 1fr);
+    /* flex-direction: column; */
+    row-gap: 30px;
+    margin: 40px 0 40px 0;
 }
 
 
