@@ -22,13 +22,6 @@ export default class Experience extends React.Component {
                             this.props.showExperienceBox();
                         }}>Add</p>
                 </div>
-                <div style={styles}>
-                    <h3 style={{paddingLeft: "5%"}}>EXPERIENCE</h3>
-                    <p className="experience-p p" style={styles2} onClick={() => {
-                            this.props.click(["title", "companyName", "experienceStartDate", "experienceEndDate", "description"]);
-                            this.props.showExperienceBox();
-                        }}>Add</p>
-                </div>
                 <div style={{height: "1px", width: "25%", backgroundColor: "#5D5C5C", marginTop: "10px"}}></div>
             </div>
             <div className="experience-info-container">
