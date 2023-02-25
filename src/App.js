@@ -195,7 +195,6 @@ class App extends React.Component {
         startDate: "2018",
         endDate: "2022",
         id: uniqid()
-
       }],
       experience: [{
         title: "Senior Web Developer",
@@ -203,8 +202,6 @@ class App extends React.Component {
         experienceStartDate: "2020",
         experienceEndDate: "2023",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
-        id: uniqid(),
-        // experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
         id: uniqid(),
         // experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
       }],
@@ -258,7 +255,6 @@ class App extends React.Component {
   }
 
   click(array) {
-    // this first setState function makes it so no inputs are shown on the form
     // this first setState function makes it so no inputs are shown on the form
     this.setState(prev => {
       const arr = prev.info.map(i => {

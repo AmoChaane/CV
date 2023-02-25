@@ -208,12 +208,8 @@ class App extends React.Component {
       show: false,
       showSkillBox: false,
       showEducationBox: false,
-<<<<<<< HEAD
       showExperienceBox: false,
       showExperienceEditBox: false
-=======
-      showExperienceBox: false
->>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -226,12 +222,9 @@ class App extends React.Component {
     this.reset = this.reset.bind(this);
     this.showEducationBox = this.showEducationBox.bind(this);
     this.showExperienceBox = this.showExperienceBox.bind(this);
-<<<<<<< HEAD
     this.edit = this.edit.bind(this);
     this.showExperienceEditBox = this.showExperienceEditBox.bind(this);
     this.val = this.val.bind(this);
-=======
->>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
   }
 
   handleChange(event, id) {
@@ -248,13 +241,8 @@ class App extends React.Component {
   }
 
   text(text) {
-<<<<<<< HEAD
     const index = this.state.info.findIndex(i => {
         return i.name === text
-=======
-    const index = this.state.info.findIndex(elem => {
-        return elem.name === text
->>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
     });
     return this.state.info[index].text
   }
@@ -296,7 +284,6 @@ class App extends React.Component {
     str === "skill" ? this.setState({showSkillBox: false}) :
     str === "education" ? this.setState({showEducationBox: false}) :
     this.setState({showExperienceBox: false})
-<<<<<<< HEAD
     this.setState({showExperienceEditBox: false})
   }
 
@@ -433,8 +420,6 @@ class App extends React.Component {
       })
       return {...prev, experience: exp}
     }, console.log('state changed'));
-=======
->>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
   }
 
   showSkillBox() {
@@ -571,11 +556,8 @@ class App extends React.Component {
           reset={this.reset}
           delete={this.delete} 
           add={this.add} 
-<<<<<<< HEAD
           edit={this.edit}
           showExperienceEditBox={this.showExperienceEditBox}
-=======
->>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
         />
         {
           this.state.show && 
@@ -588,11 +570,8 @@ class App extends React.Component {
             submit={this.submit} 
             add={this.add}
             reset={this.reset}
-<<<<<<< HEAD
             edit={this.edit}
             val={this.val}
-=======
->>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
           />
         }
       </div>
