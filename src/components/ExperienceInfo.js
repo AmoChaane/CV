@@ -27,7 +27,9 @@ export default class ExperienceInfo extends React.Component {
                         </div>
                     </div>
                     <div className="experience-buttons">
-                        <button style={styles2}>Edit</button>
+                        <button style={styles2} onClick={event => {
+                            this.props.showExperienceEditBox()
+                        }}>Edit</button>
                         <button 
                             style={styles2}
                             onClick={() => this.props.delete(this.props.id, "experience")}

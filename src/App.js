@@ -208,7 +208,8 @@ class App extends React.Component {
       show: false,
       showSkillBox: false,
       showEducationBox: false,
-      showExperienceBox: false
+      showExperienceBox: false,
+      showExperienceEditBox: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -221,6 +222,9 @@ class App extends React.Component {
     this.reset = this.reset.bind(this);
     this.showEducationBox = this.showEducationBox.bind(this);
     this.showExperienceBox = this.showExperienceBox.bind(this);
+    this.edit = this.edit.bind(this);
+    this.showExperienceEditBox = this.showExperienceEditBox.bind(this);
+    this.val = this.val.bind(this);
   }
 
   handleChange(event, id) {
@@ -237,10 +241,17 @@ class App extends React.Component {
   }
 
   text(text) {
-    const index = this.state.info.findIndex(elem => {
-        return elem.name === text
+    const index = this.state.info.findIndex(i => {
+        return i.name === text
     });
     return this.state.info[index].text
+  }
+
+  val(text, id) {
+    const index = this.state.experience.findIndex(i => {
+      return i.id === id 
+    });
+    return this.state.experience[index][text]
   }
 
   click(array) {
@@ -273,24 +284,36 @@ class App extends React.Component {
     str === "skill" ? this.setState({showSkillBox: false}) :
     str === "education" ? this.setState({showEducationBox: false}) :
     this.setState({showExperienceBox: false})
+    this.setState({showExperienceEditBox: false})
   }
 
   showSkillBox() {
     this.setState({showSkillBox: true});
     this.setState({showEducationBox: false});
     this.setState({showExperienceBox: false});
+    this.setState({showExperienceEditBox: false});
   }
 
   showEducationBox() {
     this.setState({showEducationBox: true});
     this.setState({showSkillBox: false});
     this.setState({showExperienceBox: false});
+    this.setState({showExperienceEditBox: false});
   }
 
   showExperienceBox() {
     this.setState({showExperienceBox: true});
     this.setState({showSkillBox: false});
     this.setState({showEducationBox: false});
+    this.setState({showExperienceEditBox: false});
+  }
+
+  showExperienceEditBox() {
+    this.setState({showExperienceEditBox: true}, () => this.setState({show: true}))
+    // this.setState({showExperienceBox: false});
+    // this.setState({showSkillBox: false});
+    // this.setState({showEducationBox: false});
+    // this.setState({show: true})
   }
 
 
@@ -387,6 +410,17 @@ class App extends React.Component {
     });
   }
 
+  edit(event, id, text) {
+    const {value} = event.target;
+
+    this.setState(prev => {
+      let exp = [...prev.experience];
+      exp = exp.map(i => {
+        return i.id === id ? {...i, [text]: value} : i
+      })
+      return {...prev, experience: exp}
+    }, console.log('state changed'));
+  }
 
   render() {
     return (
@@ -409,6 +443,8 @@ class App extends React.Component {
           reset={this.reset}
           delete={this.delete} 
           add={this.add} 
+          edit={this.edit}
+          showExperienceEditBox={this.showExperienceEditBox}
         />
         {
           this.state.show && 
@@ -421,6 +457,8 @@ class App extends React.Component {
             submit={this.submit} 
             add={this.add}
             reset={this.reset}
+            edit={this.edit}
+            val={this.val}
           />
         }
       </div>

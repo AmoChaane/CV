@@ -20,6 +20,8 @@ export default class MainInfo extends React.Component {
                 reset={this.props.reset}
                 delete={this.props.delete}
                 add={this.props.add}
+                edit={this.props.edit}
+                showExperienceEditBox={this.props.showExperienceEditBox}
             />
         </div>
     }

@@ -10,7 +10,7 @@ export default class Experience extends React.Component {
     render() {
         const styles = {display: "flex", columnGap: "20px", alignItems: "center"};
         const styles2 = {fontWeight: "900", textDecoration: "underline", fontSize: "1.2em"};
-        const experience = this.props.experience.map(i => <ExperienceInfo info={i} key={i.id} delete={this.props.delete} id={i.id}/>);
+        const experience = this.props.experience.map(i => <ExperienceInfo info={i} key={i.id} delete={this.props.delete} id={i.id} edit={this.props.edit} click={this.props.click} showExperienceBox={this.props.showExperienceBox} showExperienceEditBox={this.props.showExperienceEditBox}/>);
         // const points = this.props.exper
 
         return <div className="experience">
