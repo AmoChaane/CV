@@ -16,12 +16,10 @@ export default class Form extends React.Component {
             if(i.show) {
                 return (
                     <div className="input-holder" key={i.id2}>
-                    <div className="input-holder" key={i.id2}>
                         <label htmlFor={i.name}>{this.capital(i.name)}</label>
                         {
                             i.name === "profile" ? 
                             <textarea 
-                                className="summary-textarea"
                                 className="summary-textarea"
                                 name={i.name} 
                                 // id={i.name} 
