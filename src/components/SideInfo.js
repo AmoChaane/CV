@@ -13,8 +13,8 @@ export default class SideInfo extends React.Component {
         return <div className="sideInfo">
             <Address address={this.props.state} text={this.props.text} click={this.props.click}/>
             <NameAndRole state={this.props.state} text={this.props.text} click={this.props.click}/>
-            <Education education={this.props.state.education} text={this.props.text} click={this.props.click}/>
-            <Skills skills={this.props.state.skills} text={this.props.text} click={this.props.click}/>
+            <Education education={this.props.state.education} text={this.props.text} click={this.props.click} showEducationBox={this.props.showEducationBox} showExperienceBox={this.props.showExperienceBox} delete={this.props.delete}/>
+            <Skills state={this.props.state} text={this.props.text} click={this.props.click} delete={this.props.delete} add={this.props.add} handle={this.props.handle} addSkill={this.props.addSkill} showSkillBox={this.props.showSkillBox} showEducationBox={this.props.showEducationBox}/>
             {/* <div className="sideInfo-innerContainer">
                 <Address />
                 <NameAndRole />

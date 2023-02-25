@@ -7,7 +7,18 @@ export default class Skills extends React.Component {
     }
 
     render() {
-        const skills = this.props.skills.map(i => <li key={uniqid()}>{i}</li>);
+        const {info} = this.props.state;
+        // console.log(info);
+        // console.log(info[info.length - 1]);
+        const skills = info[info.length - 1].map(i => {
+            return (
+                <div className="skill-holder" key={i.id}>
+                    <li>{i.text}</li> 
+                    <i className="fa-solid fa-trash" onClick={() => this.props.delete(i.id, "skills")}></i>
+                    {/* <button onClick={() => this.props.delete(i.id)}>Delete</button> */}
+                </div>
+            )
+        })
         return <div className="skills">
             <span>
                 <h3 className="skills-title">SKILLS</h3>
@@ -15,6 +26,13 @@ export default class Skills extends React.Component {
             </span>
             <ul className="skills-points">
                 {skills}
+                <p className="add" onClick={() => {
+                    // this.props.click(['skill']);
+                    // this.props.addSkill();
+                    this.props.click(["skill"]);
+                    this.props.showSkillBox();
+                }}>
+                    <i className="fa-solid fa-plus"></i> Add Skill</p>
             </ul>
         </div>
     }

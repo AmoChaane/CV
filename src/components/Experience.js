@@ -8,12 +8,20 @@ export default class Experience extends React.Component {
     }
 
     render() {
-        const experience = this.props.experience.map(i => <ExperienceInfo info={i} key={uniqid()}/>);
+        const styles = {display: "flex", columnGap: "20px", alignItems: "center"};
+        const styles2 = {fontWeight: "900", textDecoration: "underline", fontSize: "1.2em"};
+        const experience = this.props.experience.map(i => <ExperienceInfo info={i} key={i.id} delete={this.props.delete} id={i.id}/>);
         // const points = this.props.exper
 
         return <div className="experience">
             <div style={{marginBottom: "3%"}}>
-                <h3 style={{paddingLeft: "5%"}}>EXPERIENCE</h3>
+                <div style={styles}>
+                    <h3 style={{paddingLeft: "5%"}}>EXPERIENCE</h3>
+                    <p className="experience-p p" style={styles2} onClick={() => {
+                            this.props.click(["title", "companyName", "experienceStartDate", "experienceEndDate", "description"]);
+                            this.props.showExperienceBox();
+                        }}>Add</p>
+                </div>
                 <div style={{height: "1px", width: "25%", backgroundColor: "#5D5C5C", marginTop: "10px"}}></div>
             </div>
             <div className="experience-info-container">

@@ -10,7 +10,7 @@ export default class Summary extends React.Component {
             <div style={{marginBottom: "3%"}}>
                 <div>
                     <h3 style={{paddingLeft: "5%"}}>PROFILE</h3>
-                    <p onClick={() => {
+                    <p className="profile-para p" onClick={() => {
                         this.props.click(['profile']);
                     }}>EDIT</p>
                 </div>

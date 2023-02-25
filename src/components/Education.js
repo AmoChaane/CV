@@ -8,7 +8,12 @@ export default class Education extends React.Component {
     }
 
     render() {
-        const education = this.props.education.map(i => <EducationInfo info={i} key={uniqid()}/>);
+        // <i className="fa-solid fa-trash" onClick={() => this.props.delete(i.id, "education")}></i>
+        const education = this.props.education.map(i => {
+            return (
+                <EducationInfo info={i} delete={this.props.delete} id={i.id} key={i.id}/>
+            )
+        });
         return <div className="education">
             <span>
                 <h3 className="education-title">EDUCATION</h3>
@@ -26,6 +31,13 @@ export default class Education extends React.Component {
                     <p className="course-period">2023 - 2026</p>
                 </div> */}
                 {education}
+                <p className="add" onClick={() => {
+                    // this.props.click(['skill']);
+                    // this.props.addSkill();
+                    this.props.click(["institution", "course", "institutionStartDate", "institutionEndDate"]);
+                    this.props.showEducationBox();
+                }}>
+                    <i className="fa-solid fa-plus"></i> Add Education</p>
             </div>
         </div>
     }

@@ -16,8 +16,11 @@ export default class PersonalInfo extends React.Component {
         };
 
         return <div className="personal-info">
-            <div className="image">
-                <img src={pic} alt="Profile Picture"/>
+            <div className="image section">
+            {/* <img className="section" src={pic} alt="Profile Picture"/> */}
+                <div className="overlay">
+                    <p className="overlay">EDIT</p>
+                </div>
             </div>
             <div className="info">
                 <div className="section">
