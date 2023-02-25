@@ -195,7 +195,6 @@ class App extends React.Component {
         startDate: "2018",
         endDate: "2022",
         id: uniqid()
-
       }],
       experience: [{
         title: "Senior Web Developer",
@@ -205,14 +204,16 @@ class App extends React.Component {
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
         id: uniqid(),
         // experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
-        id: uniqid(),
-        // experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
       }],
       show: false,
       showSkillBox: false,
       showEducationBox: false,
+<<<<<<< HEAD
       showExperienceBox: false,
       showExperienceEditBox: false
+=======
+      showExperienceBox: false
+>>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -225,9 +226,12 @@ class App extends React.Component {
     this.reset = this.reset.bind(this);
     this.showEducationBox = this.showEducationBox.bind(this);
     this.showExperienceBox = this.showExperienceBox.bind(this);
+<<<<<<< HEAD
     this.edit = this.edit.bind(this);
     this.showExperienceEditBox = this.showExperienceEditBox.bind(this);
     this.val = this.val.bind(this);
+=======
+>>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
   }
 
   handleChange(event, id) {
@@ -244,8 +248,13 @@ class App extends React.Component {
   }
 
   text(text) {
+<<<<<<< HEAD
     const index = this.state.info.findIndex(i => {
         return i.name === text
+=======
+    const index = this.state.info.findIndex(elem => {
+        return elem.name === text
+>>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
     });
     return this.state.info[index].text
   }
@@ -258,7 +267,6 @@ class App extends React.Component {
   }
 
   click(array) {
-    // this first setState function makes it so no inputs are shown on the form
     // this first setState function makes it so no inputs are shown on the form
     this.setState(prev => {
       const arr = prev.info.map(i => {
@@ -288,6 +296,7 @@ class App extends React.Component {
     str === "skill" ? this.setState({showSkillBox: false}) :
     str === "education" ? this.setState({showEducationBox: false}) :
     this.setState({showExperienceBox: false})
+<<<<<<< HEAD
     this.setState({showExperienceEditBox: false})
   }
 
@@ -424,7 +433,122 @@ class App extends React.Component {
       })
       return {...prev, experience: exp}
     }, console.log('state changed'));
+=======
+>>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
   }
+
+  showSkillBox() {
+    this.setState({showSkillBox: true});
+    this.setState({showEducationBox: false});
+    this.setState({showExperienceBox: false});
+  }
+
+  showEducationBox() {
+    this.setState({showEducationBox: true});
+    this.setState({showSkillBox: false});
+    this.setState({showExperienceBox: false});
+  }
+
+  showExperienceBox() {
+    this.setState({showExperienceBox: true});
+    this.setState({showSkillBox: false});
+    this.setState({showEducationBox: false});
+  }
+
+
+  delete(id, sec) {
+    this.setState(prev => {
+      let arr;
+      if(sec === "skills") {
+        arr = prev.info[prev.info.length - 1];
+        arr = arr.filter(i => {
+          return i.id !== id
+        });
+        const obj = [...prev.info];
+        obj[obj.length - 1] = arr;
+        return {...prev, info: obj}
+      }
+      else if(sec === "education") {
+        arr = prev.education;
+        arr = arr.filter(i => {
+          return i.id !== id
+        });
+        return {...prev, education: arr}
+      }
+      else {
+        arr = prev.experience;
+        arr = arr.filter(i => {
+          return i.id !== id
+        });
+        return {...prev, experience: arr}
+      }
+
+    });
+  }
+
+  add(sec) {
+    this.setState(prev => {
+      // console.log(prev);
+      // let arr = sec === "skills" ? [...prev.info[prev.info.length - 1]] : 
+      // sec === "education" ? [...prev.education] :
+      // [...prev.experience];
+      let arr;
+      if(sec === "skills") {
+        arr = [...prev.info[prev.info.length - 1]];
+        arr.push({text: this.state.info[this.state.info.findIndex(k => k.name === "skill")].text, id: uniqid()})
+        const obj = [...prev.info];
+        obj[obj.length - 1] = arr;
+        return {...prev, info: obj}
+      } else if(sec === "education") {
+        arr = [...prev.education];
+        arr.push({
+          course: this.state.info[this.state.info.findIndex(k => k.name === "course")].text,
+          university: this.state.info[this.state.info.findIndex(k => k.name === "institution")].text,
+          startDate: this.state.info[this.state.info.findIndex(k => k.name === "institutionStartDate")].text,
+          endDate: this.state.info[this.state.info.findIndex(k => k.name === "institutionEndDate")].text,
+          id: uniqid()
+        })
+        return {...prev, education: arr}
+      } else {
+        arr = [...prev.experience];
+        arr.push({
+          title: this.state.info[this.state.info.findIndex(k => k.name === "title")].text,
+          companyName: this.state.info[this.state.info.findIndex(k => k.name === "companyName")].text,
+          experienceStartDate: this.state.info[this.state.info.findIndex(k => k.name === "experienceStartDate")].text,
+          experienceEndDate: this.state.info[this.state.info.findIndex(k => k.name === "experienceEndDate")].text,
+          id: uniqid(),
+          description: this.state.info[this.state.info.findIndex(k => k.name === "description")].text
+        })
+        return {...prev, experience: arr}
+      }
+      console.log(arr)
+      // arr.push({text: value, id: uniqid()})
+      // const obj = [...prev.info];
+      // obj[obj.length - 1] = arr;
+      // return {...prev, info: obj}
+    });
+  }
+
+  reset() { // this resets the below state object
+    this.setState(prev => {
+      let arr = [...prev.info]
+      arr = arr.map(i => {
+        return i.name === "skill" ? {...i, text: ""} : 
+        i.name === "course" ? {...i, text: ""} :
+        i.name === "institution" ? {...i, text: ""} :
+        i.name === "institutionStartDate" ? {...i, text: ""} :
+        i.name === "institutionEndDate" ? {...i, text: ""} :
+        i.name === "title" ? {...i, text: ""} :
+        i.name === "companyName" ? {...i, text: ""} :
+        i.name === "experienceStartDate" ? {...i, text: ""} :
+        i.name === "experienceEndDate" ? {...i, text: ""} :
+        i.name === "description" ? {...i, text: ""} : i
+
+      });
+      return {...prev, info: arr}
+    });
+  }
+
 
   render() {
     return (
@@ -447,8 +571,11 @@ class App extends React.Component {
           reset={this.reset}
           delete={this.delete} 
           add={this.add} 
+<<<<<<< HEAD
           edit={this.edit}
           showExperienceEditBox={this.showExperienceEditBox}
+=======
+>>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
         />
         {
           this.state.show && 
@@ -461,8 +588,11 @@ class App extends React.Component {
             submit={this.submit} 
             add={this.add}
             reset={this.reset}
+<<<<<<< HEAD
             edit={this.edit}
             val={this.val}
+=======
+>>>>>>> 838ec1e2ef2f908920e4f791e1258b0461266761
           />
         }
       </div>
