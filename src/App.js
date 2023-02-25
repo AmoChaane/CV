@@ -18,12 +18,16 @@ class App extends React.Component {
         show: false,
         id: "street",
         id2: uniqid()
+        id: "street",
+        id2: uniqid()
       },
       {
         text: "Derdepoort",
         type: "text",
         name: "suburb",
         show: false,
+        id: "suburb",
+        id2: uniqid()
         id: "suburb",
         id2: uniqid()
       },
@@ -34,12 +38,16 @@ class App extends React.Component {
         show: false,
         id: "city",
         id2: uniqid()
+        id: "city",
+        id2: uniqid()
       },
       {
         text: "South Africa",
         type: "text",
         name: "country",
         show: false,
+        id: "country",
+        id2: uniqid()
         id: "country",
         id2: uniqid()
       },
@@ -50,12 +58,16 @@ class App extends React.Component {
         show: false,
         id: "firstName",
         id2: uniqid()
+        id: "firstName",
+        id2: uniqid()
       },
       {
         text: "Chaane",
         type: "text",
         name: "lastName",
         show: false,
+        id: "lastName",
+        id2: uniqid()
         id: "lastName",
         id2: uniqid()
       },
@@ -66,12 +78,16 @@ class App extends React.Component {
         show: false,
         id: "role",
         id2: uniqid()
+        id: "role",
+        id2: uniqid()
       },
       {
         text: "amogelangchaane200@gmail.com",
         type: "email",
         name: "email",
         show: false,
+        id: "email",
+        id2: uniqid()
         id: "email",
         id2: uniqid()
       },
@@ -82,12 +98,16 @@ class App extends React.Component {
         show: false,
         id: "number",
         id2: uniqid()
+        id: "number",
+        id2: uniqid()
       },
       {
         text: "www.amochaane.com",
         type: "text",
         name: "website",
         show: false,
+        id: "website",
+        id2: uniqid()
         id: "website",
         id2: uniqid()
       },
@@ -187,12 +207,105 @@ class App extends React.Component {
         {text: "SEO", id: uniqid()}, 
         {text: "Google Ads", id: uniqid()}
       ]
+        id: "profile",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "skill",
+        show: false,
+        id: "skill",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "institution",
+        show: false,
+        id: "institution",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "course",
+        show: false,
+        id: "course",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "institutionStartDate",
+        show: false,
+        id: "institutionStartDate",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "institutionEndDate",
+        show: false,
+        id: "institutionEndDate",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "title",
+        show: false,
+        id: "title",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "companyName",
+        show: false,
+        id: "companyName",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "experienceStartDate",
+        show: false,
+        id: "experienceStartDate",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "experienceEndDate",
+        show: false,
+        id: "experienceEndDate",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "description",
+        show: false,
+        id: "description",
+        id2: uniqid()
+      },
+      [
+        {text: "HTML5", id: uniqid()}, 
+        {text: "CSS", id: uniqid()}, 
+        {text: "Javascript", id: uniqid()}, 
+        {text: "ReactJs", id: uniqid()}, 
+        {text: "SEO", id: uniqid()}, 
+        {text: "Google Ads", id: uniqid()}
+      ]
     ],
       image: "",
       education: [{
         course: 'BSc IT',
         university: "Richfield College",
         startDate: "2018",
+        endDate: "2022",
+        id: uniqid()
         endDate: "2022",
         id: uniqid()
       }],
@@ -202,6 +315,8 @@ class App extends React.Component {
         experienceStartDate: "2020",
         experienceEndDate: "2023",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
+        id: uniqid(),
+        // experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
         id: uniqid(),
         // experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
       }],
@@ -230,13 +345,17 @@ class App extends React.Component {
   handleChange(event, id) {
     const {value} = event.target;
 
+    const {value} = event.target;
+
     this.setState(prev => {
       const arr = prev.info;
       const index = arr.findIndex((elem) => {
         return elem.name === id
+        return elem.name === id
       })
       arr[index] = {...arr[index], text: value}
       return {...prev, info: arr}
+    });
     });
   }
 
@@ -256,11 +375,17 @@ class App extends React.Component {
 
   click(array) {
     // this first setState function makes it so no inputs are shown on the form
+    // this first setState function makes it so no inputs are shown on the form
     this.setState(prev => {
       const arr = prev.info.map(i => {
         return !i.length ? {...i, show: false} : i
+        return !i.length ? {...i, show: false} : i
       });
       return {...prev, info: arr}
+    });
+  // This second one first changes the show property of the needed objects to 'true' so that they are included
+  // in the form. 
+  // After that it then displays the form
     });
   // This second one first changes the show property of the needed objects to 'true' so that they are included
   // in the form. 
@@ -269,6 +394,7 @@ class App extends React.Component {
       this.setState(prev => {
         const arr = prev.info;
         const index = arr.findIndex((elem) => {
+          return elem.name === i
           return elem.name === i
         })
         arr[index] = {...arr[index], show: true}
@@ -421,6 +547,7 @@ class App extends React.Component {
       return {...prev, experience: exp}
     }, console.log('state changed'));
   }
+
 
   render() {
     return (

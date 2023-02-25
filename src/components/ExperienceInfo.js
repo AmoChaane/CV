@@ -10,6 +10,9 @@ export default class ExperienceInfo extends React.Component {
         const styles = {display: "flex", flexDirection: "column", alignItems: "flex-start"};
         const styles2 = {padding: "9% 37%"}
         // const points = this.props.info.experiencePoints.map(i => <li key={uniqid()}>{i}</li>);
+        const styles = {display: "flex", flexDirection: "column", alignItems: "flex-start"};
+        const styles2 = {padding: "9% 37%"}
+        // const points = this.props.info.experiencePoints.map(i => <li key={uniqid()}>{i}</li>);
         return (
             <div className="experience-info"  style={{padding: "0 5%"}}>
                 <div className="firstDiv" style={{display: "flex", justifyContent: "space-between", paddingRight: "20%"}}>
@@ -39,6 +42,7 @@ export default class ExperienceInfo extends React.Component {
                 <p>{this.props.info.description}
                 </p>
                 <ul className="experience-points">
+                    {/* {points} */}
                     {/* {points} */}
                 </ul>
             </div>  
