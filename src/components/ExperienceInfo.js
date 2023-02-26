@@ -28,7 +28,8 @@ export default class ExperienceInfo extends React.Component {
                     </div>
                     <div className="experience-buttons">
                         <button style={styles2} onClick={event => {
-                            this.props.showExperienceEditBox()
+                            this.props.showExperienceEditBox();
+                            this.props.showInput(this.props.id);
                         }}>Edit</button>
                         <button 
                             style={styles2}

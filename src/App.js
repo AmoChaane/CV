@@ -203,6 +203,7 @@ class App extends React.Component {
         experienceEndDate: "2023",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
         id: uniqid(),
+        show: false
         // experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
       }],
       show: false,
@@ -225,6 +226,7 @@ class App extends React.Component {
     this.edit = this.edit.bind(this);
     this.showExperienceEditBox = this.showExperienceEditBox.bind(this);
     this.val = this.val.bind(this);
+    this.showInput = this.showInput.bind(this);
   }
 
   handleChange(event, id) {
@@ -281,8 +283,8 @@ class App extends React.Component {
 
   submit(str) {
     this.setState({show: false}); // this removes the edit box
-    str === "skill" ? this.setState({showSkillBox: false}) :
-    str === "education" ? this.setState({showEducationBox: false}) :
+    this.setState({showSkillBox: false})
+    this.setState({showEducationBox: false})
     this.setState({showExperienceBox: false})
     this.setState({showExperienceEditBox: false})
   }
@@ -378,7 +380,8 @@ class App extends React.Component {
           experienceStartDate: this.state.info[this.state.info.findIndex(k => k.name === "experienceStartDate")].text,
           experienceEndDate: this.state.info[this.state.info.findIndex(k => k.name === "experienceEndDate")].text,
           id: uniqid(),
-          description: this.state.info[this.state.info.findIndex(k => k.name === "description")].text
+          description: this.state.info[this.state.info.findIndex(k => k.name === "description")].text,
+          show: false
         })
         return {...prev, experience: arr}
       }
@@ -422,6 +425,16 @@ class App extends React.Component {
     }, console.log('state changed'));
   }
 
+  showInput(id) {
+    this.setState(prev => {
+      let exp = [...prev.experience];
+      exp = exp.map(i => {
+        return i.id === id ? {...i, show: true} : {...i, show: false}
+      })
+      return {...prev, experience: exp}
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -445,6 +458,7 @@ class App extends React.Component {
           add={this.add} 
           edit={this.edit}
           showExperienceEditBox={this.showExperienceEditBox}
+          showInput={this.showInput}
         />
         {
           this.state.show && 

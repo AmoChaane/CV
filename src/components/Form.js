@@ -60,12 +60,14 @@ export default class Form extends React.Component {
 
         const inputs2 = ["title", "companyName", "experienceStartDate", "experienceEndDate", "description"].map(i => {
             return this.props.state.experience.map(j => {
-                return (
-                    <div className="input-holder">
-                        <label>{i}</label>
-                        <input type="text" name={i} key={i} value={this.props.val(i, j.id)} onChange={event => this.props.edit(event, j.id, i)}/>
-                    </div>
-                )
+                if(j.show) {
+                    return (
+                        <div className="input-holder">
+                            <label>{i}</label>
+                            <input type="text" name={i} key={i} value={this.props.val(i, j.id)} onChange={event => this.props.edit(event, j.id, i)}/>
+                        </div>
+                    )
+                }
             });
         });
         // const inputs2 = this.props.state.experience.map(i => {
@@ -89,6 +91,8 @@ export default class Form extends React.Component {
             minWidth: "55vw"
         }
 
+        const styles3 = {...styles, ...styles2}
+
         
         return (
             <div id="overlay" style={{display: this.props.state.show ? "flex" : "none"}}>
@@ -97,7 +101,9 @@ export default class Form extends React.Component {
                         <h1 style={{textAlign: "center"}}>EDIT</h1>
                         <hr />
                     </div>
-                    <div className="inputs" style={this.props.state.showExperienceBox ? styles : null}>
+                    <div className="inputs" style={this.props.state.showExperienceBox ? styles : 
+                    this.props.state.showExperienceEditBox ? styles3 : null
+                    }>
                         {this.props.state.showExperienceEditBox ? inputs2 : inputs}
                     </div>
 

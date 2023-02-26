@@ -22,6 +22,7 @@ export default class MainInfo extends React.Component {
                 add={this.props.add}
                 edit={this.props.edit}
                 showExperienceEditBox={this.props.showExperienceEditBox}
+                showInput={this.props.showInput}
             />
         </div>
     }
