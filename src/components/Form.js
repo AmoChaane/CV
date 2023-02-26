@@ -12,9 +12,10 @@ export default class Form extends React.Component {
                     <div className="input-holder" key={i.id2}>
                         <label htmlFor={i.name}>{this.props.capital(i.name)}</label>
                         {
-                            i.name === "profile" ? 
+                            i.name === "profile" || i.name === "description" ? 
                             <textarea 
                                 className="summary-textarea"
+                                style={{height: i.name === "profile" ? "200px" : ""}}
                                 name={i.name} 
                                 // id={i.name} 
                                 value={this.props.text(i.name)} 
@@ -55,24 +56,31 @@ export default class Form extends React.Component {
         const inputs2 = ["title", "companyName", "experienceStartDate", "experienceEndDate", "description"].map(i => {
             return this.props.state.experience.map(j => {
                 if(j.show) {
-                    return (
-                        <div className="input-holder">
-                            <label>{this.props.capital(i)}</label>
-                            <input type="text" name={i} key={i} value={this.props.val(i, j.id)} onChange={event => this.props.edit(event, j.id, i)}/>
-                        </div>
-                    )
+                    if(i !== "description") {
+                        return (
+                            <div className="input-holder">
+                                <label>{this.props.capital(i)}</label>
+                                <input type="text" name={i} key={i} value={this.props.val(i, j.id)} onChange={event => this.props.edit(event, j.id, i)}/>
+                            </div>
+                        )
+                    } else {
+                        return (
+                            <div className="input-holder">
+                                <label>{this.props.capital(i)}</label>
+                                <textarea 
+                                    className="summary-textarea"
+                                    name={i} 
+                                    // id={i.name} 
+                                    value={this.props.val(i, j.id)} 
+                                    onChange={event => this.props.edit(event, j.id, i)} 
+                                    key={i}>
+                                </textarea> 
+                            </div>
+                        )
+                    }
                 }
             });
         });
-        // const inputs2 = this.props.state.experience.map(i => {
-        //         return (
-        //             <div className="input-holder">
-        //                 <label>{i}</label>
-        //                 <input type="text" name={i} key={i} value={this.props.val(i, i.id)} onChange={event => this.props.edit(event, j.id, i)}/>
-        //             </div>
-        //         )
-
-        // });
 
         const styles = {
             display: "grid",
