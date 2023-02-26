@@ -4,19 +4,13 @@ export default class Form extends React.Component {
     constructor() {
         super();
     }
-
-    capital(str) {
-        const first = str[0].toUpperCase();
-        const rest = str.slice(1).toLowerCase();
-        return first + rest;
-    }
     
     render() {
         const inputs = this.props.data.map(i => {
             if(i.show) {
                 return (
                     <div className="input-holder" key={i.id2}>
-                        <label htmlFor={i.name}>{this.capital(i.name)}</label>
+                        <label htmlFor={i.name}>{this.props.capital(i.name)}</label>
                         {
                             i.name === "profile" ? 
                             <textarea 
@@ -63,7 +57,7 @@ export default class Form extends React.Component {
                 if(j.show) {
                     return (
                         <div className="input-holder">
-                            <label>{i}</label>
+                            <label>{this.props.capital(i)}</label>
                             <input type="text" name={i} key={i} value={this.props.val(i, j.id)} onChange={event => this.props.edit(event, j.id, i)}/>
                         </div>
                     )

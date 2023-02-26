@@ -227,6 +227,7 @@ class App extends React.Component {
     this.showExperienceEditBox = this.showExperienceEditBox.bind(this);
     this.val = this.val.bind(this);
     this.showInput = this.showInput.bind(this);
+    this.capital = this.capital.bind(this);
   }
 
   handleChange(event, id) {
@@ -280,6 +281,20 @@ class App extends React.Component {
       });
     });
   }
+
+  capital(str) {
+    // const first = str[0].toUpperCase();
+    // const rest = str.slice(1).toLowerCase();
+    // return first + rest;
+    return str === "firstName" ? "First Name" :
+    str === "lastName" ? "Last Name" :
+    str === "institutionStartDate" ? "Start Date" :
+    str === "institutionEndDate" ? "End Date" : 
+    str === "companyName" ? "Company Name" :
+    str === "experienceStartDate" ? "Start Date" :
+    str === "experienceEndDate" ? "End Date" :
+    str[0].toUpperCase() + str.slice(1).toLowerCase()
+}
 
   submit(str) {
     this.setState({show: false}); // this removes the edit box
@@ -473,6 +488,7 @@ class App extends React.Component {
             reset={this.reset}
             edit={this.edit}
             val={this.val}
+            capital={this.capital}
           />
         }
       </div>
