@@ -11,7 +11,7 @@ export default class Education extends React.Component {
         // <i className="fa-solid fa-trash" onClick={() => this.props.delete(i.id, "education")}></i>
         const education = this.props.education.map(i => {
             return (
-                <EducationInfo info={i} delete={this.props.delete} id={i.id} key={i.id}/>
+                <EducationInfo info={i} delete={this.props.delete} id={i.id} key={i.id} text={this.props.text}/>
             )
         });
         return <div className="education">

@@ -1,5 +1,5 @@
 import React from "react"
-import pic from "../images/pexels-clay-elliot-14634933.jpg";
+// import pic from this.props.state.image.previewUrl
 
 export default class PersonalInfo extends React.Component {
     constructor() {
@@ -15,24 +15,49 @@ export default class PersonalInfo extends React.Component {
             cursor: "pointer"
         };
 
+        const styles2= {
+            height: "100%",
+            // backgroundImage: `url(../images/pexels-clay-elliot-14634933.jpg)`,
+            backgroundImage: `url(${this.props.state.image})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "noRepeat",
+            // filter: "gray",
+            // filter: "grayscale(100%)",
+            borderRadius: "0 0 10px 10px",
+        
+        }        
+        
+
         return <div className="personal-info">
-            <div className="image section">
-            {/* <img className="section" src={pic} alt="Profile Picture"/> */}
+            <div className="image section" style={styles2}>
+            {/* <img className="section" alt="Profile Picture"/> */}
                 <div className="overlay">
-                    <p className="overlay">EDIT</p>
+                    <label className="overlay" htmlFor="image-upload">Add Image</label>
+                    <input type="file" id="image-upload" onChange={(event) => this.props.previewImage(event)}/>
                 </div>
             </div>
             <div className="info">
                 <div className="section">
                     <p className="overlay" style={styles} onClick={() => {
-                        this.props.click(['email', "number", 'website']);
+                        this.props.click(['email', "number", 'website', 'linkedin']);
                     }}>EDIT</p>
-                    <div className="f"><i className="fa-solid fa-envelope" style={{color: "#5D5C5C"}}></i></div>
-                    <div className="i"><p className="email">{this.props.text('email')}</p></div>
-                    <div className="f"><i className="fa-solid fa-mobile" style={{color: "#5D5C5C"}}></i></div>
-                    <div className="i"><p className="number">{this.props.text('number')}</p></div>
-                    <div className="f"><i className="fa-solid fa-globe" style={{color: "#5D5C5C"}}></i></div>
-                    <div className="i"><p className="website">{this.props.text('website')}</p></div>
+                    <div className="holders">
+                        <div className="f"><i className="fa-solid fa-envelope" style={{color: "#5D5C5C"}}></i></div>
+                        <div className="i"><p className="email">{this.props.text('email')}</p></div>
+                    </div>
+                    <div className="holders">
+                        <div className="f"><i className="fa-solid fa-mobile" style={{color: "#5D5C5C"}}></i></div>
+                        <div className="i"><p className="number">{this.props.text('number')}</p></div>
+                    </div>
+                    <div className="holders" style={{display: this.props.text('website') === "" ? "none" : "grid"}}>
+                        <div className="f"><i className="fa-solid fa-globe" style={{color: "#5D5C5C"}}></i></div>
+                        <div className="i"><p className="website">{this.props.text('website')}</p></div>
+                    </div>
+                    <div className="holders" style={{display: this.props.text('linkedin') === "" ? "none" : "grid"}}>
+                        <div className="f"><i className="fa-brands fa-linkedin" style={{color: "#5D5C5C"}}></i></div>
+                        <div className="i"><p className="linkedin">{this.props.text('linkedin')}</p></div>
+                    </div>
                 </div>
             </div>
         </div>

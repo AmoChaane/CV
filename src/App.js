@@ -92,7 +92,16 @@ class App extends React.Component {
         id2: uniqid()
       },
       {
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
+        text: "https://www.linkedin.com/in/benjamin-grant-72381ujy3u",
+        type: "text",
+        name: "linkedin",
+        show: false,
+        id: "linkedin",
+        id2: uniqid()
+      },
+      {
+        text: 
+        "As a self-taught junior web developer with a strong passion for coding, I am looking for opportunities to apply and expand my skills. My experience has been focused on front-end development using HTML, CSS, and JavaScript. I have also worked with popular libraries and frameworks like React, Vue, and jQuery to build dynamic and responsive web applications. I am highly motivated and proactive, with a strong desire to learn and grow. I enjoy taking on new challenges and am always eager to learn new technologies and techniques. I have a strong attention to detail and a commitment to producing high-quality work. In addition to my technical skills, I have excellent communication and problem-solving skills. I am a quick learner, a good team player, and have a positive attitude towards challenges. I am also passionate about building user-centered and accessible web applications. I am excited about the opportunity to work with a dynamic team that values creativity, innovation, and collaboration. I am confident that my skills, passion, and commitment to excellence make me an excellent candidate for any junior web developer position.",
         type: "text",
         name: "profile",
         show: false,
@@ -184,16 +193,19 @@ class App extends React.Component {
         {text: "CSS", id: uniqid()}, 
         {text: "Javascript", id: uniqid()}, 
         {text: "ReactJs", id: uniqid()}, 
-        {text: "SEO", id: uniqid()}, 
-        {text: "Google Ads", id: uniqid()}
+        {text: "Webpack", id: uniqid()}, 
+        {text: "Fetch APIs", id: uniqid()}
       ]
     ],
-      image: "",
+      // image: 'https://gdurl.com/jdVr/',
+      // image: "https://gdurl.com/doTl/",
+      image: "https://gdurl.com/rc90/",
+      // image: "https://gdurl.com/82GF/",
       education: [{
         course: 'BSc IT',
         university: "Richfield College",
-        startDate: "2018",
-        endDate: "2022",
+        startDate: "2023",
+        endDate: "2024",
         id: uniqid()
       }],
       experience: [{
@@ -228,6 +240,7 @@ class App extends React.Component {
     this.val = this.val.bind(this);
     this.showInput = this.showInput.bind(this);
     this.capital = this.capital.bind(this);
+    this.previewImage = this.previewImage.bind(this);
   }
 
   handleChange(event, id) {
@@ -450,6 +463,44 @@ class App extends React.Component {
     });
   }
 
+
+  // previewImage(event) {
+  //   // var preview = document.getElementById('image-preview');
+  //   this.setState(prev => {
+  //     const file = event.target.files[0];
+  //     const reader = new FileReader();
+  //     let img;
+
+  //     reader.onloadend = function() {
+  //       if(file) {
+  //         reader.readAsDataURL(file);
+  //       }
+  //       img = reader.result;
+  //     }
+
+  //     return {
+  //       ...prev,
+  //       image: img
+  //     }
+  //   });
+  // }
+
+  previewImage(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+  
+    reader.onloadend = () => {
+      this.setState(prevState => ({
+        ...prevState,
+        image: reader.result
+      }));
+    };
+  
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
   render() {
     return (
       <div className="container">
@@ -474,6 +525,7 @@ class App extends React.Component {
           edit={this.edit}
           showExperienceEditBox={this.showExperienceEditBox}
           showInput={this.showInput}
+          previewImage={this.previewImage}
         />
         {
           this.state.show && 

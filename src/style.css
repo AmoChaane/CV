@@ -249,28 +249,17 @@ li {
     align-items: center;
 } */
 
-.image {
-    /* border: 1px solid #5D5C5C; */
-    /* width: 100%; */
+/* .image {
     height: 100%;
-    background-image: url("./images/pexels-clay-elliot-14634933.jpg");
+    background-image: url("C:\Users\User\CV\images/pexels-clay-elliot-14634933.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     filter: gray;
     filter: grayscale(100%);
-    /* border: 1px solid #5D5C5C; */
-    border-radius: 0 0 10px 10px;
-    background-image: url("./images/pexels-clay-elliot-14634933.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: gray;
-    filter: grayscale(100%);
-    /* border: 1px solid #5D5C5C; */
     border-radius: 0 0 10px 10px;
 
-}
+} */
 
 .image:hover {
     border-radius: 10px;
@@ -310,7 +299,7 @@ img {
 
 .info .section {
     display: grid;
-    grid-template-columns: 100px 1fr;
+    /* grid-template-columns: 100px 1fr; */
     row-gap: 20px;
     /* border: 1px solid #5D5C5C;
     border-radius: 10px; */
@@ -602,4 +591,22 @@ button:hover {
 
 .p:hover {
     transform: scale(1.1);
+}
+
+
+.holders {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+
+.overlay input {
+    display: none;
+}
+
+.overlay label {
+    font-size: 1.2em;
+    text-decoration: underline;
+    font-weight: 900;
+    cursor: pointer;
 }
