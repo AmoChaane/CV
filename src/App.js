@@ -101,7 +101,7 @@ class App extends React.Component {
       },
       {
         text: 
-        "As a self-taught web developer with a strong passion for coding, I am looking for opportunities to apply and expand my skills. My experience has been focused on front-end development using HTML, CSS, and JavaScript. I have also worked with popular libraries and frameworks like React to build dynamic and responsive web applications. ",
+        "As a self-taught web developer with a strong passion for coding, I am looking for opportunities to apply and expand my skills. My experience has been focused on front-end development using HTML, CSS, and JavaScript. I have also worked with the popular library, 'React', to build dynamic and responsive web applications. ",
         type: "text",
         name: "profile",
         show: false,
