@@ -295,6 +295,7 @@ img {
     flex-direction: column;
     justify-content: flex-end;
     padding-left: 10%;
+    /* padding: 0 1% 0 10%; */
 }
 
 .info .section {
@@ -477,7 +478,9 @@ img {
     display: flex;
     flex-direction: column;
     row-gap: 30px;
-    margin: 30px 0 30px 0;
+    padding: 5% 0 5% 0;
+    max-height: 100%;
+    min-height: 100%;
 }
 
 
@@ -492,6 +495,10 @@ img {
 .input-holder { 
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
 }
 
 .input-holder label {
@@ -525,6 +532,8 @@ img {
 
 textarea {
     width: auto;
+    /* min-width: 100%; */
+    max-width: 100%;
     height: auto;
     font-size: 1.03em;
     outline: none;
@@ -578,7 +587,7 @@ button:hover {
 
 .summary-textarea {
     /* min-width: 100%; */
-    /* max-width: 100%; */
+    max-width: 100%;
     width: 100%;
     /* height: 50%; */
     padding: 2%;

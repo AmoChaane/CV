@@ -92,7 +92,7 @@ class App extends React.Component {
         id2: uniqid()
       },
       {
-        text: "https://www.linkedin.com/in/benjamin-grant-72381ujy3u",
+        text: "https://www.linkedin.com/in/amogelang-chaane-6044391bb/",
         type: "text",
         name: "linkedin",
         show: false,
@@ -101,9 +101,27 @@ class App extends React.Component {
       },
       {
         text: 
-        "As a self-taught junior web developer with a strong passion for coding, I am looking for opportunities to apply and expand my skills. My experience has been focused on front-end development using HTML, CSS, and JavaScript. I have also worked with popular libraries and frameworks like React, Vue, and jQuery to build dynamic and responsive web applications. I am highly motivated and proactive, with a strong desire to learn and grow. I enjoy taking on new challenges and am always eager to learn new technologies and techniques. I have a strong attention to detail and a commitment to producing high-quality work. In addition to my technical skills, I have excellent communication and problem-solving skills. I am a quick learner, a good team player, and have a positive attitude towards challenges. I am also passionate about building user-centered and accessible web applications. I am excited about the opportunity to work with a dynamic team that values creativity, innovation, and collaboration. I am confident that my skills, passion, and commitment to excellence make me an excellent candidate for any junior web developer position.",
+        "As a self-taught web developer with a strong passion for coding, I am looking for opportunities to apply and expand my skills. My experience has been focused on front-end development using HTML, CSS, and JavaScript. I have also worked with popular libraries and frameworks like React to build dynamic and responsive web applications. ",
         type: "text",
         name: "profile",
+        show: false,
+        id: "profile",
+        id2: uniqid()
+      },
+      {
+        text: 
+        "I am highly motivated and proactive, with a strong desire to learn and grow. I enjoy taking on new challenges and am always eager to learn new technologies and techniques. I have a strong attention to detail and a commitment to producing high-quality work. In addition to my technical skills, I have excellent communication and problem-solving skills. I am a quick learner, a good team player, and have a positive attitude towards challenges. I am also passionate about building user-centered and accessible web applications. ",
+        type: "text",
+        name: "profile2",
+        show: false,
+        id: "profile",
+        id2: uniqid()
+      },
+      {
+        text: 
+        "I am excited about the opportunity to work with a dynamic team that values creativity, innovation, and collaboration. I am confident that my skills, passion, and commitment to excellence make me an excellent candidate for any junior web developer position.",
+        type: "text",
+        name: "profile3",
         show: false,
         id: "profile",
         id2: uniqid()
@@ -194,7 +212,10 @@ class App extends React.Component {
         {text: "Javascript", id: uniqid()}, 
         {text: "ReactJs", id: uniqid()}, 
         {text: "Webpack", id: uniqid()}, 
-        {text: "Fetch APIs", id: uniqid()}
+        {text: "Fetch APIs", id: uniqid()},
+        {text: "Problem Solving", id: uniqid()},
+        {text: "Attention to detail", id: uniqid()},
+        {text: "Team Player", id: uniqid()}
       ]
     ],
       // image: 'https://gdurl.com/jdVr/',
@@ -241,6 +262,7 @@ class App extends React.Component {
     this.showInput = this.showInput.bind(this);
     this.capital = this.capital.bind(this);
     this.previewImage = this.previewImage.bind(this);
+    this.showSummary = this.showSummary.bind(this);
   }
 
   handleChange(event, id) {
@@ -306,6 +328,9 @@ class App extends React.Component {
     str === "companyName" ? "Company Name" :
     str === "experienceStartDate" ? "Start Date" :
     str === "experienceEndDate" ? "End Date" :
+    str === "profile" ? "Paragraph 1" :
+    str === "profile2" ? "Paragraph 2" :
+    str === "profile3" ? "Paragraph 3" :
     str[0].toUpperCase() + str.slice(1).toLowerCase()
 }
 
@@ -315,6 +340,7 @@ class App extends React.Component {
     this.setState({showEducationBox: false})
     this.setState({showExperienceBox: false})
     this.setState({showExperienceEditBox: false})
+    this.setState({showSummary: false});
   }
 
   showSkillBox() {
@@ -322,6 +348,7 @@ class App extends React.Component {
     this.setState({showEducationBox: false});
     this.setState({showExperienceBox: false});
     this.setState({showExperienceEditBox: false});
+    this.setState({showSummary: false});
   }
 
   showEducationBox() {
@@ -329,6 +356,7 @@ class App extends React.Component {
     this.setState({showSkillBox: false});
     this.setState({showExperienceBox: false});
     this.setState({showExperienceEditBox: false});
+    this.setState({showSummary: false});
   }
 
   showExperienceBox() {
@@ -336,14 +364,20 @@ class App extends React.Component {
     this.setState({showSkillBox: false});
     this.setState({showEducationBox: false});
     this.setState({showExperienceEditBox: false});
+    this.setState({showSummary: false});
   }
 
   showExperienceEditBox() {
     this.setState({showExperienceEditBox: true}, () => this.setState({show: true}))
+    this.setState({showSummary: false});
     // this.setState({showExperienceBox: false});
     // this.setState({showSkillBox: false});
     // this.setState({showEducationBox: false});
     // this.setState({show: true})
+  }
+
+  showSummary() {
+    this.setState({showSummary: true});
   }
 
 
@@ -526,6 +560,8 @@ class App extends React.Component {
           showExperienceEditBox={this.showExperienceEditBox}
           showInput={this.showInput}
           previewImage={this.previewImage}
+          capital={this.capital}
+          showSummary={this.showSummary}
         />
         {
           this.state.show && 
@@ -541,6 +577,7 @@ class App extends React.Component {
             edit={this.edit}
             val={this.val}
             capital={this.capital}
+            showSummary={this.showSummary}
           />
         }
       </div>

@@ -12,10 +12,10 @@ export default class Form extends React.Component {
                     <div className="input-holder" key={i.id2}>
                         <label htmlFor={i.name}>{this.props.capital(i.name)}</label>
                         {
-                            i.name === "profile" || i.name === "description" ? 
+                            i.name === "profile" || i.name === "description" || i.name === "profile2" || i.name === "profile3"? 
                             <textarea 
                                 className="summary-textarea"
-                                style={{height: i.name === "profile" ? "200px" : ""}}
+                                // style={{width: i.name === "profile" ? "60vw" : ""}}
                                 name={i.name} 
                                 // id={i.name} 
                                 value={this.props.text(i.name)} 
@@ -95,6 +95,14 @@ export default class Form extends React.Component {
 
         const styles3 = {...styles, ...styles2}
 
+        const styles4 = {
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            rowGap: "30px",
+            columnGap: "30px",
+            width: "75vw"
+        }
+
         
         return (
             <div id="overlay" style={{display: this.props.state.show ? "flex" : "none"}}>
@@ -104,7 +112,7 @@ export default class Form extends React.Component {
                         <hr />
                     </div>
                     <div className="inputs" style={this.props.state.showExperienceBox ? styles : 
-                    this.props.state.showExperienceEditBox ? styles3 : null
+                    this.props.state.showExperienceEditBox ? styles3 : this.props.state.showSummary ? styles4 : null
                     }>
                         {this.props.state.showExperienceEditBox ? inputs2 : inputs}
                     </div>
