@@ -34,7 +34,7 @@ export default class PersonalInfo extends React.Component {
             {/* <img className="section" alt="Profile Picture"/> */}
                 <div className="overlay">
                     <label className="overlay" htmlFor="image-upload">Add Image</label>
-                    <input type="file" id="image-upload" onChange={(event) => this.props.previewImage(event)}/>
+                    <input type="file" id="image-upload" accept="image/*" onChange={(event) => this.props.previewImage(event)}/>
                 </div>
             </div>
             <div className="info">

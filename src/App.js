@@ -137,6 +137,14 @@ class App extends React.Component {
       {
         text: "",
         type: "text",
+        name: "project",
+        show: false,
+        id: "project",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
         name: "institution",
         show: false,
         id: "institution",
@@ -207,6 +215,15 @@ class App extends React.Component {
         id2: uniqid()
       },
       [
+        {text: "https://amochaane.github.io/Quizzical", id: uniqid()}, 
+        {text: "https://amochaane.github.io/Weather-App", id: uniqid()}, 
+        {text: "https://amochaane.github.io/Dashboard", id: uniqid()}, 
+        {text: "https://amochaane.github.io/Todo-List", id: uniqid()}, 
+        {text: "https://amochaane.github.io/Tic-Tac-Toe", id: uniqid()}, 
+        {text: "https://amochaane.github.io/Calculator", id: uniqid()}, 
+        {text: "https://amochaane.github.io/Rock-Paper-Scissors", id: uniqid()}, 
+      ],
+      [
         {text: "HTML5", id: uniqid()}, 
         {text: "CSS", id: uniqid()}, 
         {text: "Javascript", id: uniqid()}, 
@@ -263,6 +280,7 @@ class App extends React.Component {
     this.capital = this.capital.bind(this);
     this.previewImage = this.previewImage.bind(this);
     this.showSummary = this.showSummary.bind(this);
+    this.showProjectBox = this.showProjectBox.bind(this);
   }
 
   handleChange(event, id) {
@@ -341,6 +359,8 @@ class App extends React.Component {
     this.setState({showExperienceBox: false})
     this.setState({showExperienceEditBox: false})
     this.setState({showSummary: false});
+    this.setState({showProjectBox: false});
+
   }
 
   showSkillBox() {
@@ -349,6 +369,7 @@ class App extends React.Component {
     this.setState({showExperienceBox: false});
     this.setState({showExperienceEditBox: false});
     this.setState({showSummary: false});
+    this.setState({showProjectBox: false});
   }
 
   showEducationBox() {
@@ -357,6 +378,7 @@ class App extends React.Component {
     this.setState({showExperienceBox: false});
     this.setState({showExperienceEditBox: false});
     this.setState({showSummary: false});
+    this.setState({showProjectBox: false});
   }
 
   showExperienceBox() {
@@ -365,11 +387,13 @@ class App extends React.Component {
     this.setState({showEducationBox: false});
     this.setState({showExperienceEditBox: false});
     this.setState({showSummary: false});
+    this.setState({showProjectBox: false});
   }
 
   showExperienceEditBox() {
     this.setState({showExperienceEditBox: true}, () => this.setState({show: true}))
     this.setState({showSummary: false});
+    this.setState({showProjectBox: false});
     // this.setState({showExperienceBox: false});
     // this.setState({showSkillBox: false});
     // this.setState({showEducationBox: false});
@@ -378,6 +402,21 @@ class App extends React.Component {
 
   showSummary() {
     this.setState({showSummary: true});
+    this.setState({showProjectBox: false});
+    this.setState({showSkillBox: false});
+    this.setState({showEducationBox: false});
+    this.setState({showExperienceEditBox: false});
+    this.setState({showExperienceBox: false});
+    this.setState({showSummary: false});
+  }
+
+  showProjectBox() {
+    this.setState({showProjectBox: true});
+    this.setState({showSkillBox: false});
+    this.setState({showEducationBox: false});
+    this.setState({showExperienceEditBox: false});
+    this.setState({showExperienceBox: false});
+    this.setState({showSummary: false});
   }
 
 
@@ -391,6 +430,15 @@ class App extends React.Component {
         });
         const obj = [...prev.info];
         obj[obj.length - 1] = arr;
+        return {...prev, info: obj}
+      }
+      else if(sec === "projects") {
+        arr = prev.info[prev.info.length - 2];
+        arr = arr.filter(i => {
+          return i.id !== id
+        });
+        const obj = [...prev.info];
+        obj[obj.length - 2] = arr;
         return {...prev, info: obj}
       }
       else if(sec === "education") {
@@ -547,6 +595,7 @@ class App extends React.Component {
           showEducationBox={this.showEducationBox}
           showExperienceBox={this.showExperienceBox}
           reset={this.reset}
+          showProjectBox={this.showProjectBox}
         />
         <MainInfo 
           state={this.state} 

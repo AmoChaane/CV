@@ -162,6 +162,7 @@ p {
     flex-direction: column;
     row-gap: 10px;
     padding-left: 7%;
+    max-width: 100%;
 }
 
 .skills:hover .add {
@@ -201,7 +202,10 @@ p {
 
 
 li {
+    /* display: block; */
     font-size: 1.1em;
+    width: 100%;
+    max-width: 100%;
 }
 
 .fa-location-dot {
@@ -571,7 +575,8 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     column-gap: 10px;
-    padding-right: 25%;
+    /* padding-right: 25%; */
+    max-width: 100%;
 }
 
 .fa-trash {
