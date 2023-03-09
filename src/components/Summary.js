@@ -19,9 +19,7 @@ export default class Summary extends React.Component {
             </div>
             <p style={{padding: "0 5%"}}>{this.props.text('profile')}</p>
             <br />
-            <br />
             <p style={{padding: "0 5%"}}>{this.props.text('profile2')}</p>
-            <br />
             <br />
             <p style={{padding: "0 5%"}}>{this.props.text('profile3')}</p>
             

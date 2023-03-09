@@ -24,7 +24,9 @@ export default class PersonalInfo extends React.Component {
             backgroundRepeat: "noRepeat",
             // filter: "gray",
             // filter: "grayscale(100%)",
+            // border: "1px solid black",
             borderRadius: "0 0 10px 10px",
+            // borderRadius: "50%"
         
         }        
         

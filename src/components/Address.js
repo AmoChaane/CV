@@ -6,6 +6,9 @@ export default class Address extends React.Component {
     }
 
     render() {
+        const styles = {
+            maxWidth: "100%"
+        }
         return <div className="address section">
             <div className="overlay">
                 <p onClick={() => {
@@ -16,11 +19,11 @@ export default class Address extends React.Component {
                 <i className="fa-solid fa-location-dot"></i>
             </div> */}
             <i className="fa-solid fa-location-dot"></i>
-            <div>
-                <p className="street">{this.props.text('street')}</p>
-                <p className="Suburb">{this.props.text('suburb')}</p>
-                <p className="City">{this.props.text('city')}</p>
-                <p className="country">{this.props.text('country')}</p>
+            <div style={{maxWidth: "100%", minWidth: "100%"}}>
+                <p className="street" style={styles}>{this.props.text('street')}</p>
+                <p className="Suburb" style={styles}>{this.props.text('suburb')}</p>
+                <p className="City" style={styles}>{this.props.text('city')}</p>
+                <p className="country" style={styles}>{this.props.text('country')}</p>
             </div>
         </div>
     }

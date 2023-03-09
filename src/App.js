@@ -1,9 +1,12 @@
 import React from "react";
-import SideInfo from "./components/SideInfo"
-import MainInfo from "./components/MainInfo"
-import Form from "./components/Form"
+import Pdf from "./Pdf";
 import uniqid from 'uniqid';
+import Form from "./components/Form"
+import MainInfo from "./components/MainInfo"
+import SideInfo from "./components/SideInfo"
 import "./style.css";
+import pic from "./images/pexels-clay-elliot-14634933.jpg"
+import { PDFDownloadLink, Page, Text, View, Document } from '@react-pdf/renderer';
 // import pic1 from "./images/pexels-karolina-grabowska-4466540.jpg"
 // import pic2 from "./images/pexels-mikhail-nilov-6707631.jpg"
 
@@ -235,10 +238,8 @@ class App extends React.Component {
         {text: "Team Player", id: uniqid()}
       ]
     ],
-      // image: 'https://gdurl.com/jdVr/',
-      // image: "https://gdurl.com/doTl/",
       image: "https://gdurl.com/rc90/",
-      // image: "https://gdurl.com/82GF/",
+      // image: pic,
       education: [{
         course: 'BSc IT',
         university: "Richfield College",
@@ -260,7 +261,8 @@ class App extends React.Component {
       showSkillBox: false,
       showEducationBox: false,
       showExperienceBox: false,
-      showExperienceEditBox: false
+      showExperienceEditBox: false,
+      showSummary: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -407,7 +409,6 @@ class App extends React.Component {
     this.setState({showEducationBox: false});
     this.setState({showExperienceEditBox: false});
     this.setState({showExperienceBox: false});
-    this.setState({showSummary: false});
   }
 
   showProjectBox() {
@@ -584,8 +585,19 @@ class App extends React.Component {
   }
 
   render() {
+    const MyDocument = (
+      <Document>
+        <Page>
+          <View>
+            <Text>My Website</Text>
+          </View>
+        </Page>
+      </Document>
+    );
+
     return (
       <div className="container">
+        
         <SideInfo state={this.state} 
           text={this.text} 
           click={this.click} 
@@ -612,6 +624,8 @@ class App extends React.Component {
           capital={this.capital}
           showSummary={this.showSummary}
         />
+        <div>
+        </div>
         {
           this.state.show && 
           <Form 
@@ -629,6 +643,9 @@ class App extends React.Component {
             showSummary={this.showSummary}
           />
         }
+        {/* <PDFDownloadLink document={MyDocument} fileName="my_website.pdf">
+          {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download PDF')}
+        </PDFDownloadLink> */}
       </div>
     )
   }

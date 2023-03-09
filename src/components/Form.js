@@ -108,7 +108,12 @@ export default class Form extends React.Component {
             <div id="overlay" style={{display: this.props.state.show ? "flex" : "none"}}>
                 <div className="form" style={this.props.state.showExperienceBox ? styles2 : null}>
                     <div className="form-title">
-                        <h1 style={{textAlign: "center"}}>EDIT</h1>
+                        <h1 style={{textAlign: "center"}}>{
+                            this.props.state.showExperienceBox ? "Add Experience" :
+                            this.props.state.showEducationBox ? "Add Education" :
+                            this.props.state.showSkillBox ? "Add Skill" :
+                            this.props.state.showSummary ? "Edit Profile" : "Edit"
+                        }</h1>
                         <hr />
                     </div>
                     <div className="inputs" style={this.props.state.showExperienceBox ? styles : 
