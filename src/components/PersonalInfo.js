@@ -22,6 +22,7 @@ export default class PersonalInfo extends React.Component {
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "noRepeat",
+            maxWidth: "100%",
             // filter: "gray",
             // filter: "grayscale(100%)",
             // border: "1px solid black",
