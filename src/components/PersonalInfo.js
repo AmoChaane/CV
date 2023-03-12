@@ -22,6 +22,7 @@ export default class PersonalInfo extends React.Component {
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "noRepeat",
+            width: "100%",
             maxWidth: "100%",
             // filter: "gray",
             // filter: "grayscale(100%)",
@@ -33,17 +34,29 @@ export default class PersonalInfo extends React.Component {
         
 
         return <div className="personal-info">
-            <div className="image section" style={styles2}>
-            {/* <img className="section" alt="Profile Picture"/> */}
-                <div className="overlay">
-                    <label className="overlay" htmlFor="image-upload">Add Image</label>
-                    <input type="file" id="image-upload" accept="image/*" onChange={(event) => this.props.previewImage(event)}/>
+            <div className="image-holder">
+                <div className="image section" style={styles2}>
+                    <div className="overlay">
+                        <label className="overlay" htmlFor="image-upload">Add Image</label>
+                        <input type="file" id="image-upload" accept="image/*" onChange={(event) => this.props.previewImage(event)}/>
+                    </div>
+                </div>
+                <div className="holders section" style={{display: this.props.text('age') === "" ? "none" : "block"}}>
+                    <div className="overla">
+                        <div className="" style={{width: "100%", position: "relative", textAlign: "center"}}><p 
+                        onClick={() => {
+                            this.props.click(['age']);
+                        }} 
+                        className="age" 
+                        style={{fontWeight: "900", position: "absolute", width: "100%", top: "10px"}}>{this.props.text('age')}</p></div>
+                    </div>
+                    {/* <div className="i"><p className="age" style={{fontWeight: "700"}}>{this.props.text('age')}</p></div> */}
                 </div>
             </div>
             <div className="info">
                 <div className="section">
                     <p className="overlay" style={styles} onClick={() => {
-                        this.props.click(['email', "number", 'website', 'linkedin']);
+                        this.props.click(['email', "number", 'website', 'linkedin', 'github']);
                     }}>EDIT</p>
                     <div className="holders">
                         <div className="f"><i className="fa-solid fa-envelope" style={{color: "#5D5C5C"}}></i></div>
@@ -61,6 +74,14 @@ export default class PersonalInfo extends React.Component {
                         <div className="f"><i className="fa-brands fa-linkedin" style={{color: "#5D5C5C"}}></i></div>
                         <div className="i"><p className="linkedin">{this.props.text('linkedin')}</p></div>
                     </div>
+                    <div className="holders" style={{display: this.props.text('github') === "" ? "none" : "grid"}}>
+                        <div className="f"><i className="fa-brands fa-github" style={{color: "#5D5C5C"}}></i></div>
+                        <div className="i"><p className="github">{this.props.text('github')}</p></div>
+                    </div>
+                    {/* <div className="holders" style={{display: this.props.text('age') === "" ? "none" : "grid"}}>
+                        <div className="f"><i className="fa-solid fa-person" style={{color: "#5D5C5C"}}></i></div>
+                        <div className="i"><p className="age">{this.props.text('age')}</p></div>
+                    </div> */}
                 </div>
             </div>
         </div>

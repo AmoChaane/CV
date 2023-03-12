@@ -52,6 +52,7 @@ export default class Form extends React.Component {
                 
             }
         });
+        console.log(inputs)
 
         const inputs2 = ["title", "companyName", "experienceStartDate", "experienceEndDate", "description"].map(i => {
             return this.props.state.experience.map(j => {
@@ -117,7 +118,8 @@ export default class Form extends React.Component {
                         <hr />
                     </div>
                     <div className="inputs" style={this.props.state.showExperienceBox ? styles : 
-                    this.props.state.showExperienceEditBox ? styles3 : this.props.state.showSummary ? styles4 : null
+                    this.props.state.showExperienceEditBox ? styles3 : this.props.state.showSummary ? styles4 : 
+                    inputs.filter(k => k).length >= 5 ? styles3 : null
                     }>
                         {this.props.state.showExperienceEditBox ? inputs2 : inputs}
                     </div>

@@ -15,9 +15,6 @@ export default class Address extends React.Component {
                     this.props.click(['street', "suburb", 'city', 'country']);
                 }}>EDIT</p>
             </div>
-            {/* <div className="address-icon-holder">
-                <i className="fa-solid fa-location-dot"></i>
-            </div> */}
             <i className="fa-solid fa-location-dot"></i>
             <div style={{maxWidth: "100%", minWidth: "100%"}}>
                 <p className="street" style={styles}>{this.props.text('street')}</p>

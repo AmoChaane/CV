@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      info: [{
+      info: [{ // This array holds all the info we have except for education and experience
         text: "280 Drawwer Crescent",
         type: "text",
         name: "street",
@@ -100,6 +100,22 @@ class App extends React.Component {
         name: "linkedin",
         show: false,
         id: "linkedin",
+        id2: uniqid()
+      },
+      {
+        text: "https://github.com/AmoChaane",
+        type: "text",
+        name: "github",
+        show: false,
+        id: "github",
+        id2: uniqid()
+      },
+      {
+        text: "2003-08-22",
+        type: "text",
+        name: "age",
+        show: false,
+        id: "age",
         id2: uniqid()
       },
       {
@@ -226,7 +242,7 @@ class App extends React.Component {
         {text: "https://amochaane.github.io/Calculator", id: uniqid()}, 
         {text: "https://amochaane.github.io/Rock-Paper-Scissors", id: uniqid()}, 
       ],
-      [
+      [ // This array holds all the skills we have
         {text: "HTML5", id: uniqid()}, 
         {text: "CSS", id: uniqid()}, 
         {text: "Javascript", id: uniqid()}, 
@@ -240,29 +256,29 @@ class App extends React.Component {
     ],
       image: "https://gdurl.com/rc90/",
       // image: pic,
-      education: [{
+      education: [{ // This array holds all the educations we have
         course: 'BSc IT',
         university: "Richfield College",
         startDate: "2023",
         endDate: "2024",
         id: uniqid()
       }],
-      experience: [{
+      experience: [{ // This array holds all the experiences we have
         title: "Senior Web Developer",
         companyName: 'Google',
         experienceStartDate: "2020",
         experienceEndDate: "2023",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
         id: uniqid(),
-        show: false
+        show: true
         // experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
       }],
-      show: false,
-      showSkillBox: false,
-      showEducationBox: false,
-      showExperienceBox: false,
-      showExperienceEditBox: false,
-      showSummary: false
+      show: false,  // When show is true, our form will be displayed
+      showSkillBox: false, // When showSkillBox is true, our skill input box is displayed
+      showEducationBox: false, // When showEducationBox is true, our education input box is displayed
+      showExperienceBox: false, // When showExperienceBox is true, our experience input box is displayed
+      showExperienceEditBox: false,// When showExperienceEditBox is true, our experience edit input box is displayed
+      showSummary: false// When showSummary is true, our profile/summary input box is displayed
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -285,6 +301,7 @@ class App extends React.Component {
     this.showProjectBox = this.showProjectBox.bind(this);
   }
 
+  // This function runs everytime we edit an input box
   handleChange(event, id) {
     const {value} = event.target;
 
@@ -298,6 +315,7 @@ class App extends React.Component {
     });
   }
 
+  // This function returns the current text of the specified input box so that it can be displayed inside the input box
   text(text) {
     const index = this.state.info.findIndex(i => {
         return i.name === text
@@ -305,6 +323,8 @@ class App extends React.Component {
     return this.state.info[index].text
   }
 
+  // This function runs when we edit an item in the experience section. It returns the text of the item we are editing and 
+  // displays it in our input box
   val(text, id) {
     const index = this.state.experience.findIndex(i => {
       return i.id === id 
@@ -337,10 +357,8 @@ class App extends React.Component {
     });
   }
 
+  // This function just returns the neat version of the provided text
   capital(str) {
-    // const first = str[0].toUpperCase();
-    // const rest = str.slice(1).toLowerCase();
-    // return first + rest;
     return str === "firstName" ? "First Name" :
     str === "lastName" ? "Last Name" :
     str === "institutionStartDate" ? "Start Date" :
@@ -351,9 +369,11 @@ class App extends React.Component {
     str === "profile" ? "Paragraph 1" :
     str === "profile2" ? "Paragraph 2" :
     str === "profile3" ? "Paragraph 3" :
+    str === "age" ? "Date of Birth" :
     str[0].toUpperCase() + str.slice(1).toLowerCase()
 }
 
+  // resets the below state properties so that there is no unwanted behaviour with our form
   submit(str) {
     this.setState({show: false}); // this removes the edit box
     this.setState({showSkillBox: false})
@@ -365,6 +385,8 @@ class App extends React.Component {
 
   }
 
+  // Updates the below property to true so that only infomation related to that property is shown on our form.
+  // Then it turns everything else to false
   showSkillBox() {
     this.setState({showSkillBox: true});
     this.setState({showEducationBox: false});
@@ -374,6 +396,8 @@ class App extends React.Component {
     this.setState({showProjectBox: false});
   }
 
+  // Updates the below property to true so that only infomation related to that property is shown on our form.
+  // Then it turns everything else to false
   showEducationBox() {
     this.setState({showEducationBox: true});
     this.setState({showSkillBox: false});
@@ -392,6 +416,8 @@ class App extends React.Component {
     this.setState({showProjectBox: false});
   }
 
+  // Updates the below property to true so that only infomation related to that property is shown on our form.
+  // Then it turns everything else to false
   showExperienceEditBox() {
     this.setState({showExperienceEditBox: true}, () => this.setState({show: true}))
     this.setState({showSummary: false});
@@ -402,6 +428,8 @@ class App extends React.Component {
     // this.setState({show: true})
   }
 
+  // Updates the below property to true so that only infomation related to that property is shown on our form.
+  // Then it turns everything else to false
   showSummary() {
     this.setState({showSummary: true});
     this.setState({showProjectBox: false});
@@ -411,6 +439,8 @@ class App extends React.Component {
     this.setState({showExperienceBox: false});
   }
 
+  // Updates the below property to true so that only infomation related to that property is shown on our form.
+  // Then it turns everything else to false
   showProjectBox() {
     this.setState({showProjectBox: true});
     this.setState({showSkillBox: false});
@@ -421,6 +451,7 @@ class App extends React.Component {
   }
 
 
+  // Runs everytime we delete an item in either Skills, Education or Experience
   delete(id, sec) {
     this.setState(prev => {
       let arr;
@@ -460,12 +491,9 @@ class App extends React.Component {
     });
   }
 
+  // Runs everytime we add an item to either Skills, Experience or Education
   add(sec) {
     this.setState(prev => {
-      // console.log(prev);
-      // let arr = sec === "skills" ? [...prev.info[prev.info.length - 1]] : 
-      // sec === "education" ? [...prev.education] :
-      // [...prev.experience];
       let arr;
       if(sec === "skills") {
         arr = [...prev.info[prev.info.length - 1]];
@@ -504,7 +532,10 @@ class App extends React.Component {
     });
   }
 
-  reset() { // this resets the below state object
+  // Resets the below state object
+  // Makes it so that the next time we add an item in either Skills, Education or Experience, it doesn't show us what we
+  // entered the previous time
+  reset() {
     this.setState(prev => {
       let arr = [...prev.info]
       arr = arr.map(i => {
@@ -524,6 +555,7 @@ class App extends React.Component {
     });
   }
 
+  // This runs everytime we edit an item in the Experience section
   edit(event, id, text) {
     const {value} = event.target;
 
@@ -536,6 +568,9 @@ class App extends React.Component {
     }, console.log('state changed'));
   }
 
+  // Turns the show property of the specified item to true
+  // Allows us to edit(in the experience section) the item we clicked on instead of whatever the first one was
+  // Whichever one we're editing, its the one that's going to be displayed on the form
   showInput(id) {
     this.setState(prev => {
       let exp = [...prev.experience];
@@ -547,26 +582,6 @@ class App extends React.Component {
   }
 
 
-  // previewImage(event) {
-  //   // var preview = document.getElementById('image-preview');
-  //   this.setState(prev => {
-  //     const file = event.target.files[0];
-  //     const reader = new FileReader();
-  //     let img;
-
-  //     reader.onloadend = function() {
-  //       if(file) {
-  //         reader.readAsDataURL(file);
-  //       }
-  //       img = reader.result;
-  //     }
-
-  //     return {
-  //       ...prev,
-  //       image: img
-  //     }
-  //   });
-  // }
 
   previewImage(event) {
     const file = event.target.files[0];

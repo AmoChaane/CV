@@ -126,7 +126,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    row-gap: 70px;  
+    row-gap: 85px;  
     padding-bottom: 10%;
 }
 
@@ -452,6 +452,22 @@ img {
     border-radius: 10px;
 }
 
+/* This one is only applied to the date of birth */
+.overla { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200, 199, 196, 0.5);
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s linear;
+    border-radius: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .section:hover .overlay {
     /* display: flex; */
     opacity: 1;
@@ -517,7 +533,7 @@ img {
 .input-holder input {
     height: 45px;
     outline: none;
-    width: 90%;
+    width: 100%;
     padding-left: 2%;
     /* border-radius: 10px; */
     /* border: 1px solid #5D5C5C;
@@ -614,6 +630,7 @@ button:hover {
 .holders {
     display: grid;
     grid-template-columns: 1fr 3fr;
+    width: 100%;
 }
 
 
@@ -626,4 +643,17 @@ button:hover {
     text-decoration: underline;
     font-weight: 900;
     cursor: pointer;
+} 
+
+.image-holder {
+    display: flex;
+    flex-direction: column;
+    /* row-gap: 40px; */
+    align-items: center;
+    position: relative;
+}
+
+
+.age:hover {
+    text-decoration: underline;
 }
