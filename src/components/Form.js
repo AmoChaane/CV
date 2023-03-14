@@ -6,7 +6,7 @@ export default class Form extends React.Component {
     }
     
     render() {
-        const inputs = this.props.data.map(i => {
+        const inputs = this.props.info.map(i => {
             if(i.show) {
                 return (
                     <div className="input-holder" key={i.id2}>
@@ -52,33 +52,47 @@ export default class Form extends React.Component {
                 
             }
         });
-        console.log(inputs)
+        // console.log(inputs)
 
         const inputs2 = ["title", "companyName", "experienceStartDate", "experienceEndDate", "description"].map(i => {
             return this.props.state.experience.map(j => {
                 if(j.show) {
                     if(i !== "description") {
                         return (
-                            <div className="input-holder">
+                            <div className="input-holder" key={j.id}>
                                 <label>{this.props.capital(i)}</label>
-                                <input type="text" name={i} key={i} value={this.props.val(i, j.id)} onChange={event => this.props.edit(event, j.id, i)}/>
+                                <input type="text" name={i} key={i} value={this.props.val(i, j.id, "experience")} onChange={event => this.props.edit(event, j.id, i, "experience")}/>
                             </div>
                         )
                     } else {
                         return (
-                            <div className="input-holder">
+                            <div className="input-holder" key={j.id}>
                                 <label>{this.props.capital(i)}</label>
                                 <textarea 
                                     className="summary-textarea"
                                     name={i} 
                                     // id={i.name} 
-                                    value={this.props.val(i, j.id)} 
-                                    onChange={event => this.props.edit(event, j.id, i)} 
+                                    value={this.props.val(i, j.id, "experience")} 
+                                    onChange={event => this.props.edit(event, j.id, i, "experience")} 
                                     key={i}>
                                 </textarea> 
                             </div>
                         )
                     }
+                }
+            });
+        });
+
+
+        const inputs3 = ["name", "company", "position", "number", "email"].map(i => {
+            return this.props.state.references.map(j => {
+                if(j.show) {
+                    return (
+                        <div className="input-holder" key={j.id}>
+                            <label>{this.props.capital(i)}</label>
+                            <input type="text" name={i} key={i} value={this.props.val(i, j.id, "references")} onChange={event => this.props.edit(event, j.id, i, "references")}/>
+                        </div>
+                    )
                 }
             });
         });
@@ -113,15 +127,19 @@ export default class Form extends React.Component {
                             this.props.state.showExperienceBox ? "Add Experience" :
                             this.props.state.showEducationBox ? "Add Education" :
                             this.props.state.showSkillBox ? "Add Skill" :
-                            this.props.state.showSummary ? "Edit Profile" : "Edit"
+                            this.props.state.showSummary ? "Edit Profile" : 
+                            this.props.state.showReferences ? "Add Reference" :
+                            "Edit"
                         }</h1>
                         <hr />
                     </div>
                     <div className="inputs" style={this.props.state.showExperienceBox ? styles : 
-                    this.props.state.showExperienceEditBox ? styles3 : this.props.state.showSummary ? styles4 : 
+                    this.props.state.showExperienceEditBox || this.props.state.showReferencesEdit ? styles3 : this.props.state.showSummary ? styles4 : 
                     inputs.filter(k => k).length >= 5 ? styles3 : null
                     }>
-                        {this.props.state.showExperienceEditBox ? inputs2 : inputs}
+                        {this.props.state.showExperienceEditBox ? inputs2 : 
+                        this.props.state.showReferencesEdit ? inputs3 :
+                        inputs}
                     </div>
 
                     {
@@ -158,6 +176,18 @@ export default class Form extends React.Component {
                                         this.props.submit('experience')
                                         this.props.reset();
                                     }}>Add Experience</button> 
+                                    <button onClick={this.props.submit}>Close Edit</button>
+                                </div>
+                                
+                                :
+
+                                this.props.state.showReferences ?
+                                <div style={{display: "flex", justifyContent: "space-between", width: "100%"}}>
+                                    <button onClick={() => {
+                                        this.props.add("references");
+                                        this.props.submit('references')
+                                        this.props.reset();
+                                    }}>Add Reference</button> 
                                     <button onClick={this.props.submit}>Close Edit</button>
                                 </div>
 

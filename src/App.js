@@ -233,6 +233,46 @@ class App extends React.Component {
         id: "description",
         id2: uniqid()
       },
+      {
+        text: "",
+        type: "text",
+        name: "refName",
+        show: false,
+        id: "refName",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "email",
+        name: "refEmail",
+        show: false,
+        id: "refEmail",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "refNumber",
+        show: false,
+        id: "refNumber",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "refPosition",
+        show: false,
+        id: "refPosition",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "refCompany",
+        show: false,
+        id: "refCompany",
+        id2: uniqid()
+      },
       [
         {text: "https://amochaane.github.io/Quizzical", id: uniqid()}, 
         {text: "https://amochaane.github.io/Weather-App", id: uniqid()}, 
@@ -270,15 +310,35 @@ class App extends React.Component {
         experienceEndDate: "2023",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum fugiat saepe cupiditate.",
         id: uniqid(),
-        show: true
-        // experiencePoints: ["modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur", "modi asperiores dolorum fugiat saepe cupiditate debitis magni reiciendis ipsam eum consequatur"]
+        show: false
       }],
+      references: [{
+        name: "John Sturgis",
+        position: "Senior Developer",
+        company: "Netflix",
+        number: "084 183 2945",
+        email: "john.sturgis@gmail.com",
+        id: uniqid(),
+        show: false
+      }, 
+      {
+        name: "David Myers",
+        position: "UI/UX Designer",
+        company: "Google",
+        number: "079 843 9372",
+        email: "david.myers@gmail.com",
+        id: uniqid(),
+        show: false
+      }
+    ],
       show: false,  // When show is true, our form will be displayed
       showSkillBox: false, // When showSkillBox is true, our skill input box is displayed
       showEducationBox: false, // When showEducationBox is true, our education input box is displayed
       showExperienceBox: false, // When showExperienceBox is true, our experience input box is displayed
       showExperienceEditBox: false,// When showExperienceEditBox is true, our experience edit input box is displayed
-      showSummary: false// When showSummary is true, our profile/summary input box is displayed
+      showSummary: false, // When showSummary is true, our profile/summary input box is displayed
+      showReferences: false,
+      showReferencesEdit: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -299,6 +359,8 @@ class App extends React.Component {
     this.previewImage = this.previewImage.bind(this);
     this.showSummary = this.showSummary.bind(this);
     this.showProjectBox = this.showProjectBox.bind(this);
+    this.showReferences = this.showReferences.bind(this);
+    this.showReferencesEdit = this.showReferencesEdit.bind(this);
   }
 
   // This function runs everytime we edit an input box
@@ -323,13 +385,20 @@ class App extends React.Component {
     return this.state.info[index].text
   }
 
-  // This function runs when we edit an item in the experience section. It returns the text of the item we are editing and 
+  // This function runs when we edit an item in the experience or references section. It returns the text of the item we are editing and 
   // displays it in our input box
-  val(text, id) {
-    const index = this.state.experience.findIndex(i => {
-      return i.id === id 
-    });
-    return this.state.experience[index][text]
+  val(text, id, sec) {
+    if(sec === "experience") {
+      const index = this.state.experience.findIndex(i => {
+        return i.id === id 
+      });
+      return this.state.experience[index][text]
+    } else if(sec === "references") {
+      const index = this.state.references.findIndex(i => {
+        return i.id === id 
+      });
+      return this.state.references[index][text]
+    }
   }
 
   click(array) {
@@ -370,6 +439,11 @@ class App extends React.Component {
     str === "profile2" ? "Paragraph 2" :
     str === "profile3" ? "Paragraph 3" :
     str === "age" ? "Date of Birth" :
+    str === "refName" ? "Name" :
+    str === "refEmail" ? "Email" :
+    str === "refPosition" ? "Position" :
+    str === "refNumber" ? "Number" :
+    str === "refCompany" ? "Company" :
     str[0].toUpperCase() + str.slice(1).toLowerCase()
 }
 
@@ -382,6 +456,8 @@ class App extends React.Component {
     this.setState({showExperienceEditBox: false})
     this.setState({showSummary: false});
     this.setState({showProjectBox: false});
+    this.setState({showReferences: false});
+    this.setState({showReferencesEdit: false});
 
   }
 
@@ -394,6 +470,8 @@ class App extends React.Component {
     this.setState({showExperienceEditBox: false});
     this.setState({showSummary: false});
     this.setState({showProjectBox: false});
+    this.setState({showReferences: false});
+    this.setState({showReferencesEdit: false});
   }
 
   // Updates the below property to true so that only infomation related to that property is shown on our form.
@@ -405,6 +483,8 @@ class App extends React.Component {
     this.setState({showExperienceEditBox: false});
     this.setState({showSummary: false});
     this.setState({showProjectBox: false});
+    this.setState({showReferences: false});
+    this.setState({showReferencesEdit: false});
   }
 
   showExperienceBox() {
@@ -414,6 +494,8 @@ class App extends React.Component {
     this.setState({showExperienceEditBox: false});
     this.setState({showSummary: false});
     this.setState({showProjectBox: false});
+    this.setState({showReferences: false});
+    this.setState({showReferencesEdit: false});
   }
 
   // Updates the below property to true so that only infomation related to that property is shown on our form.
@@ -422,10 +504,8 @@ class App extends React.Component {
     this.setState({showExperienceEditBox: true}, () => this.setState({show: true}))
     this.setState({showSummary: false});
     this.setState({showProjectBox: false});
-    // this.setState({showExperienceBox: false});
-    // this.setState({showSkillBox: false});
-    // this.setState({showEducationBox: false});
-    // this.setState({show: true})
+    this.setState({showReferences: false});
+    this.setState({showReferencesEdit: false});
   }
 
   // Updates the below property to true so that only infomation related to that property is shown on our form.
@@ -437,6 +517,8 @@ class App extends React.Component {
     this.setState({showEducationBox: false});
     this.setState({showExperienceEditBox: false});
     this.setState({showExperienceBox: false});
+    this.setState({showReferences: false});
+    this.setState({showReferencesEdit: false});
   }
 
   // Updates the below property to true so that only infomation related to that property is shown on our form.
@@ -448,10 +530,30 @@ class App extends React.Component {
     this.setState({showExperienceEditBox: false});
     this.setState({showExperienceBox: false});
     this.setState({showSummary: false});
+    this.setState({showReferences: false});
+    this.setState({showReferencesEdit: false});
+  }
+
+  showReferences() {
+    this.setState({showReferences: true});
+    this.setState({showProjectBox: false});
+    this.setState({showSkillBox: false});
+    this.setState({showEducationBox: false});
+    this.setState({showExperienceEditBox: false});
+    this.setState({showExperienceBox: false});
+    this.setState({showSummary: false});
+    this.setState({showReferencesEdit: false});
+  }
+
+  showReferencesEdit() {
+    this.setState({showReferencesEdit: true}, () => this.setState({show: true}))
+    this.setState({showSummary: false});
+    this.setState({showProjectBox: false});
+    this.setState({showReferences: false});
   }
 
 
-  // Runs everytime we delete an item in either Skills, Education or Experience
+  // Runs everytime we delete an item in either Skills, Education, References or Experience
   delete(id, sec) {
     this.setState(prev => {
       let arr;
@@ -480,18 +582,24 @@ class App extends React.Component {
         });
         return {...prev, education: arr}
       }
-      else {
+      else if(sec === "references") {
+        arr = prev.references;
+        arr = arr.filter(i => {
+          return i.id !== id
+        });
+        return {...prev, references: arr}
+      }
+      else if(sec === "experience") {
         arr = prev.experience;
         arr = arr.filter(i => {
           return i.id !== id
         });
         return {...prev, experience: arr}
       }
-
     });
   }
 
-  // Runs everytime we add an item to either Skills, Experience or Education
+  // Runs everytime we add an item to either Skills, Experience, References or Education
   add(sec) {
     this.setState(prev => {
       let arr;
@@ -511,7 +619,7 @@ class App extends React.Component {
           id: uniqid()
         })
         return {...prev, education: arr}
-      } else {
+      } else if(sec === "experience") {
         arr = [...prev.experience];
         arr.push({
           title: this.state.info[this.state.info.findIndex(k => k.name === "title")].text,
@@ -523,17 +631,24 @@ class App extends React.Component {
           show: false
         })
         return {...prev, experience: arr}
+      } else if(sec === "references") {
+        arr = [...prev.references];
+        arr.push({
+          name: this.state.info[this.state.info.findIndex(k => k.name === "refName")].text,
+          company: this.state.info[this.state.info.findIndex(k => k.name === "refCompany")].text,
+          number: this.state.info[this.state.info.findIndex(k => k.name === "refNumber")].text,
+          email: this.state.info[this.state.info.findIndex(k => k.name === "refEmail")].text,
+          id: uniqid(),
+          position: this.state.info[this.state.info.findIndex(k => k.name === "refPosition")].text,
+          show: false
+        })
+        return {...prev, references: arr}
       }
-      console.log(arr)
-      // arr.push({text: value, id: uniqid()})
-      // const obj = [...prev.info];
-      // obj[obj.length - 1] = arr;
-      // return {...prev, info: obj}
     });
   }
 
   // Resets the below state object
-  // Makes it so that the next time we add an item in either Skills, Education or Experience, it doesn't show us what we
+  // Makes it so that the next time we add an item in either Skills, Education, References or Experience, it doesn't show us what we
   // entered the previous time
   reset() {
     this.setState(prev => {
@@ -548,36 +663,58 @@ class App extends React.Component {
         i.name === "companyName" ? {...i, text: ""} :
         i.name === "experienceStartDate" ? {...i, text: ""} :
         i.name === "experienceEndDate" ? {...i, text: ""} :
-        i.name === "description" ? {...i, text: ""} : i
+        i.name === "refName" ? {...i, text: ""} :
+        i.name === "refNumber" ? {...i, text: ""} :
+        i.name === "refEmail" ? {...i, text: ""} :
+        i.name === "refPosition" ? {...i, text: ""} :
+        i.name === "refCompany" ? {...i, text: ""} :
+        i
 
       });
       return {...prev, info: arr}
     });
   }
 
-  // This runs everytime we edit an item in the Experience section
-  edit(event, id, text) {
+  // This runs everytime we edit an item in the Experience or References section
+  edit(event, id, text, sec) {
     const {value} = event.target;
 
     this.setState(prev => {
-      let exp = [...prev.experience];
-      exp = exp.map(i => {
-        return i.id === id ? {...i, [text]: value} : i
-      })
-      return {...prev, experience: exp}
-    }, console.log('state changed'));
+      if(sec === "experience") {
+        let exp = [...prev.experience];
+        exp = exp.map(i => {
+          return i.id === id ? {...i, [text]: value} : i
+        })
+        return {...prev, experience: exp}
+      } else if(sec === "references") {
+        let ref = [...prev.references];
+        ref = ref.map(i => {
+          return i.id === id ? {...i, [text]: value} : i
+        })
+        return {...prev, references: ref}
+      }
+    });
   }
 
   // Turns the show property of the specified item to true
-  // Allows us to edit(in the experience section) the item we clicked on instead of whatever the first one was
+  // Allows us to edit(in the experience and references section) the item we clicked on instead of whatever the first one was
   // Whichever one we're editing, its the one that's going to be displayed on the form
-  showInput(id) {
+  showInput(id, sec) {
     this.setState(prev => {
-      let exp = [...prev.experience];
-      exp = exp.map(i => {
-        return i.id === id ? {...i, show: true} : {...i, show: false}
-      })
-      return {...prev, experience: exp}
+      if(sec === "experience") {
+        let exp = [...prev.experience];
+        exp = exp.map(i => {
+          return i.id === id ? {...i, show: true} : {...i, show: false}
+        })
+        return {...prev, experience: exp}
+      }
+      else if(sec === "references") {
+        let ref = [...prev.references];
+        ref = ref.map(i => {
+          return i.id === id ? {...i, show: true} : {...i, show: false}
+        })
+        return {...prev, references: ref}
+      }
     });
   }
 
@@ -629,6 +766,8 @@ class App extends React.Component {
           text={this.text} 
           click={this.click}
           showExperienceBox={this.showExperienceBox}
+          showReferences={this.showReferences}
+          showReferencesEdit={this.showReferencesEdit}
           reset={this.reset}
           delete={this.delete} 
           add={this.add} 
@@ -644,7 +783,7 @@ class App extends React.Component {
         {
           this.state.show && 
           <Form 
-            data={this.state.info} 
+            info={this.state.info} 
             handleChange={this.handleChange} 
             state={this.state} 
             text={this.text} 

@@ -361,30 +361,30 @@ img {
     row-gap: 9px;
 }
 
-.experience-buttons {
+.experience-buttons, .references-buttons {
     /* display: flex; */
     display: none;
 }
 
-.experience-info:hover .experience-buttons {
+.experience-info:hover .experience-buttons, .references-info:hover .references-buttons {
     display: flex;
     column-gap: 20px;
 }
 
-.experience-buttons {
+.experience-buttons, .references-buttons {
     /* display: flex; */
     display: none;
 }
 
-.experience-info:hover .experience-buttons {
+.experience-info:hover .experience-buttons, .references-info:hover .references-buttons {
     display: flex;
     column-gap: 20px;
 }
 
-.experience-info-container {
+.experience-info-container, .references-info-container {
     display: flex;
     flex-direction: column;
-    row-gap: 40px;
+    row-gap: 50px;
 }
 
 
@@ -408,20 +408,20 @@ img {
     max-width: 100%;
 }
 
-.experience:hover .experience-p {
+.experience:hover .experience-p, .references:hover .references-p {
     display: block;
 }
 
-.experience-p {
+.experience-p, .references-p {
     display: none;
     cursor: pointer;
 }
 
-.experience:hover .experience-p {
+.experience:hover .experience-p, .references:hover .references-p {
     display: block;
 }
 
-.experience-p {
+.experience-p, .references-p {
     display: none;
     cursor: pointer;
 }
@@ -656,4 +656,10 @@ button:hover {
 
 .age:hover {
     text-decoration: underline;
+}
+
+
+.refDiv {
+    display: grid;
+    row-gap: 7px;
 }

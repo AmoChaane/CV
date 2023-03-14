@@ -9,7 +9,6 @@ export default class ExperienceInfo extends React.Component {
     render() {
         const styles = {display: "flex", flexDirection: "column", alignItems: "flex-start"};
         const styles2 = {padding: "9% 37%"}
-        // const points = this.props.info.experiencePoints.map(i => <li key={uniqid()}>{i}</li>);
         return (
             <div className="experience-info"  style={{padding: "0 5%"}}>
                 <div className="firstDiv" style={{display: "flex", justifyContent: "space-between", paddingRight: "20%"}}>
@@ -18,7 +17,6 @@ export default class ExperienceInfo extends React.Component {
                         <div className="thirdDiv">
                             <h4>{this.props.info.companyName.toUpperCase()}</h4>
                             <div className="circle"></div>
-                            {/* <h4>2018 to 2022</h4> */}
                             <div className="fourthDiv">
                                 <h4 className="experience-start-date">{this.props.info.experienceStartDate}</h4>
                                 <h4>to</h4>
@@ -29,7 +27,7 @@ export default class ExperienceInfo extends React.Component {
                     <div className="experience-buttons">
                         <button style={styles2} onClick={event => {
                             this.props.showExperienceEditBox();
-                            this.props.showInput(this.props.id);
+                            this.props.showInput(this.props.id, "experience");
                         }}>Edit</button>
                         <button 
                             style={styles2}
@@ -39,9 +37,6 @@ export default class ExperienceInfo extends React.Component {
                 </div>
                 <p>{this.props.info.description}
                 </p>
-                <ul className="experience-points">
-                    {/* {points} */}
-                </ul>
             </div>  
         )
     }
