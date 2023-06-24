@@ -22,8 +22,8 @@ body {
     /* border: 1px solid lime; */
     /* width: 100vw; */
     /* height: 100vh; */
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    display: flex;
+    /* grid-template-columns: 1fr 3fr; */
     /* min-height: 100vh; */
     /* position: relative; */
     /* overflow-y: scroll; */
@@ -40,7 +40,7 @@ body {
     /* border: 1px solid blue; */
     /* background-color: #C8C7C4; */
     background-color: rgba(203,199,198,0.4);
-    padding: 15%;
+    padding: 50px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -298,8 +298,9 @@ img {
     row-gap: 5%; */
     display: flex;
     flex-direction: column;
+    width: max-content;
     justify-content: flex-end;
-    padding-left: 10%;
+    /* padding-left: 10%; */
     /* padding: 0 1% 0 10%; */
 }
 
@@ -651,6 +652,8 @@ button:hover {
     /* row-gap: 40px; */
     align-items: center;
     position: relative;
+    min-width: 250px;
+    max-width: 400px;
 }
 
 
