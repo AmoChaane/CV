@@ -36,6 +36,20 @@ export default class Form extends React.Component {
                             }} 
                             key={i.id}/>
 
+                            // :
+
+                            // i.name === "skillEdit" ? 
+
+                            // <input type={i.type} 
+                            // name={i.name} 
+                            // // id={i.name} 
+                            // value={this.props.state.info[this.props.state.info.findIndex(k => k.name === "skillEdit")].text} 
+                            // onChange={(event) => {
+                            //     // this.props.handleChange(event, i.name)
+                            //     this.props.editSkillItem(i.id, event)
+                            // }} 
+                            // key={i.id}/>
+
                             :
 
 
@@ -127,6 +141,7 @@ export default class Form extends React.Component {
                             this.props.state.showExperienceBox ? "Add Experience" :
                             this.props.state.showEducationBox ? "Add Education" :
                             this.props.state.showSkillBox ? "Add Skill" :
+                            // this.props.state.showSkillBoxEdit ? "Edit Skill" :
                             this.props.state.showSummary ? "Edit Profile" : 
                             this.props.state.showReferences ? "Add Reference" :
                             "Edit"

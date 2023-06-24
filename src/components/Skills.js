@@ -15,6 +15,10 @@ export default class Skills extends React.Component {
                 <div className="skill-holder" key={i.id}>
                     <li>{i.text}</li> 
                     <i className="fa-solid fa-trash" onClick={() => this.props.delete(i.id, "skills")}></i>
+                    {/* <i className="fa-solid fa-pencil" onClick={() => {
+                        this.props.click(["skill"]);
+                        this.props.editSkillItem(i.id)
+                    }}></i> */}
                     {/* <button onClick={() => this.props.delete(i.id)}>Delete</button> */}
                 </div>
             )
@@ -27,8 +31,6 @@ export default class Skills extends React.Component {
             <ul className="skills-points">
                 {skills}
                 <p className="add" onClick={() => {
-                    // this.props.click(['skill']);
-                    // this.props.addSkill();
                     this.props.click(["skill"]);
                     this.props.showSkillBox();
                 }}>

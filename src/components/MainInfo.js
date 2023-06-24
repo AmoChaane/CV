@@ -13,30 +13,56 @@ export default class MainInfo extends React.Component {
         return <div className="mainInfo">
             <PersonalInfo state={this.props.state} text={this.props.text} click={this.props.click} previewImage={this.props.previewImage}/>
             <Summary profile={this.props.state.profile} text={this.props.text} click={this.props.click} showSummary={this.props.showSummary}/>
-            <Experience 
-                experience={this.props.state.experience} 
-                text={this.props.text} 
-                click={this.props.click}
-                showExperienceBox={this.props.showExperienceBox}
-                reset={this.props.reset}
-                delete={this.props.delete}
-                add={this.props.add}
-                edit={this.props.edit}
-                showExperienceEditBox={this.props.showExperienceEditBox}
-                showInput={this.props.showInput}
-            />
-            <References 
-                references={this.props.state.references} 
-                text={this.props.text} 
-                click={this.props.click}
-                showReferences={this.props.showReferences}
-                reset={this.props.reset}
-                delete={this.props.delete}
-                add={this.props.add}
-                edit={this.props.edit}
-                showReferencesEdit={this.props.showReferencesEdit}
-                showInput={this.props.showInput}
-            />
+            {   this.props.state.showExperience ?
+                <Experience 
+                    state={this.props.state}
+                    experience={this.props.state.experience} 
+                    text={this.props.text} 
+                    click={this.props.click}
+                    showExperienceBox={this.props.showExperienceBox}
+                    reset={this.props.reset}
+                    delete={this.props.delete}
+                    add={this.props.add}
+                    edit={this.props.edit}
+                    showExperienceEditBox={this.props.showExperienceEditBox}
+                    showInput={this.props.showInput}
+                    alternateExperience={this.props.alternateExperience}
+                /> 
+                :
+                <div className="add-section" style={{background: "#EAE9E8"}} 
+                onClick={() => {
+                    this.props.alternateExperience()
+                }}>
+                    <p 
+                    className="add">
+                    <i className="fa-solid fa-plus"></i> Add Experience</p>
+                </div>
+            }
+            {   this.props.state.showReferencesSection ?
+                <References 
+                    state={this.props.state}
+                    references={this.props.state.references} 
+                    text={this.props.text} 
+                    click={this.props.click}
+                    showReferences={this.props.showReferences}
+                    reset={this.props.reset}
+                    delete={this.props.delete}
+                    add={this.props.add}
+                    edit={this.props.edit}
+                    showReferencesEdit={this.props.showReferencesEdit}
+                    showInput={this.props.showInput}
+                    alternateReferences={this.props.alternateReferences}
+                />
+                :
+                <div className="add-section" style={{background: "#EAE9E8"}}
+                onClick={() => {
+                    this.props.alternateReferences()
+                }}>
+                    <p 
+                    className="add">
+                    <i className="fa-solid fa-plus"></i> Add References</p>
+                </div>
+            }       
         </div>
     }
 }

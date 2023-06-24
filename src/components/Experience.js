@@ -16,10 +16,15 @@ export default class Experience extends React.Component {
             <div style={{marginBottom: "3%"}}>
                 <div style={styles}>
                     <h3 style={{paddingLeft: "5%"}}>EXPERIENCE</h3>
-                    <p className="experience-p p" style={styles2} onClick={() => {
+                    <p
+                     className="experience-p p" style={styles2} onClick={() => {
                             this.props.click(["title", "companyName", "experienceStartDate", "experienceEndDate", "description"]);
                             this.props.showExperienceBox();
                         }}>Add</p>
+                    <p
+                    className="experience-p p" style={styles2} onClick={() => {
+                        this.props.alternateExperience();
+                    }}>Remove</p>
                 </div>
                 <div style={{height: "1px", width: "25%", backgroundColor: "#5D5C5C", marginTop: "10px"}}></div>
             </div>

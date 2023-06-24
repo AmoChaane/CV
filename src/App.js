@@ -14,6 +14,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      showAddress: true,
+      showReferencesSection: true,
+      showExperience: true,
       info: [{ // This array holds all the info we have except for education and experience
         text: "280 Drawwer Crescent",
         type: "text",
@@ -153,6 +156,14 @@ class App extends React.Component {
         id: "skill",
         id2: uniqid()
       },
+      // {
+      //   text: "",
+      //   type: "text",
+      //   name: "skillEdit",
+      //   show: false,
+      //   id: "skillEdit",
+      //   id2: uniqid()
+      // },
       {
         text: "",
         type: "text",
@@ -361,6 +372,12 @@ class App extends React.Component {
     this.showProjectBox = this.showProjectBox.bind(this);
     this.showReferences = this.showReferences.bind(this);
     this.showReferencesEdit = this.showReferencesEdit.bind(this);
+    this.alternateAddress = this.alternateAddress.bind(this);
+    this.alternateReferences = this.alternateReferences.bind(this);
+    this.alternateExperience = this.alternateExperience.bind(this);
+    // this.editSkillItem = this.editSkillItem.bind(this);
+    // this.handleEditSkillChange = this.handleEditSkillChange.bind(this);
+    
   }
 
   // This function runs everytime we edit an input box
@@ -375,6 +392,76 @@ class App extends React.Component {
       arr[index] = {...arr[index], text: value}
       return {...prev, info: arr}
     });
+  }
+
+  // handleEditSkillChange(event, id) {
+  //   const {value} = event.target;
+
+  //   this.setState(prev => {
+  //     const arr = prev.info[prev.info.length - 1];
+  //     arr.map(skill => {
+  //       if(skill.id === id) {
+  //         skill.text = value
+  //       }
+  //     })
+  //     const obj = [...prev.info];
+  //     obj[obj.length - 1] = arr;
+  //     return {...prev, info: obj}
+  //   });
+  // }
+
+  // editSkillItem(id, event) {
+  //   const {value} = event.target;
+
+  //   this.setState(prev => {
+  //     const skillsArray = [...prev.info[prev.info.length - 1]]; // array for the skills array
+  //     let array;
+  //     skillsArray.forEach(skill => { // skill is each skill in the array
+  //       if(skill.id === id) { 
+  //         // skill.text = text
+  //         array = prev.info;
+  //         const index = array.findIndex((elem) => {
+  //           return elem.name === 'skillEdit'
+  //         })
+  //         array[index] = {...array[index], text: skill.text}
+  //         // return {...prev, info: arr}
+  //       }
+  //     })
+  //     skillsArray.map(skill => {
+  //       if(skill.id === id) {
+  //         skill.text = value
+  //       }
+  //     })
+  //     const obj = [...prev.info];
+  //     obj[obj.length - 1] = skillsArray;
+  //     return {...prev, info: obj}
+  //   });
+  // }
+
+  alternateAddress() {
+    this.setState(prev => {
+      return {
+        ...prev,
+        showAddress: !prev.showAddress
+      }
+    })
+  }
+
+  alternateExperience() {
+    this.setState(prev => {
+      return {
+        ...prev,
+        showExperience: !prev.showExperience
+      }
+    })
+  }
+  alternateReferences() {
+    this.setState(prev => {
+      return {
+        ...prev,
+        showReferencesSection: !prev.showReferencesSection
+      }
+    })
   }
 
   // This function returns the current text of the specified input box so that it can be displayed inside the input box
@@ -401,8 +488,9 @@ class App extends React.Component {
     }
   }
 
+  // All this function does is make sure that the correct input(s) in our form is shown
   click(array) {
-    // this first setState function makes it so no inputs are shown on the form
+    // this first setState function makes it so no unnecessary inputs are shown on the form
     this.setState(prev => {
       const arr = prev.info.map(i => {
         return !i.length ? {...i, show: false} : i
@@ -599,6 +687,8 @@ class App extends React.Component {
     });
   }
 
+  
+
   // Runs everytime we add an item to either Skills, Experience, References or Education
   add(sec) {
     this.setState(prev => {
@@ -760,6 +850,8 @@ class App extends React.Component {
           showExperienceBox={this.showExperienceBox}
           reset={this.reset}
           showProjectBox={this.showProjectBox}
+          alternateAddress={this.alternateAddress}
+          // editSkillItem={this.editSkillItem}
         />
         <MainInfo 
           state={this.state} 
@@ -777,6 +869,8 @@ class App extends React.Component {
           previewImage={this.previewImage}
           capital={this.capital}
           showSummary={this.showSummary}
+          alternateReferences={this.alternateReferences}
+          alternateExperience={this.alternateExperience}
         />
         <div>
         </div>
@@ -795,6 +889,8 @@ class App extends React.Component {
             val={this.val}
             capital={this.capital}
             showSummary={this.showSummary}
+            // handleEditSkillChange={this.handleEditSkillChange}
+            // editSkillItem={this.editSkillItem}
           />
         }
         {/* <PDFDownloadLink document={MyDocument} fileName="my_website.pdf">
