@@ -36,19 +36,19 @@ export default class Form extends React.Component {
                             }} 
                             key={i.id}/>
 
-                            // :
+                            :
 
-                            // i.name === "skillEdit" ? 
-
-                            // <input type={i.type} 
-                            // name={i.name} 
-                            // // id={i.name} 
-                            // value={this.props.state.info[this.props.state.info.findIndex(k => k.name === "skillEdit")].text} 
-                            // onChange={(event) => {
-                            //     // this.props.handleChange(event, i.name)
-                            //     this.props.editSkillItem(i.id, event)
-                            // }} 
-                            // key={i.id}/>
+                            i.name === "skillEdit" ? 
+                            <input type={i.type} 
+                            name={i.name} 
+                            // id={i.name} 
+                            value={this.props.state.info[this.props.state.info.findIndex(k => k.name === "skillEdit")].text} 
+                            onChange={(event) => {
+                                // this.props.handleChange(event, i.name)
+                                // this.props.editSkillItem(i.id)
+                                this.props.handleEditSkillChange(event)
+                            }} 
+                            key={i.id}/>
 
                             :
 
@@ -119,7 +119,7 @@ export default class Form extends React.Component {
         }
 
         const styles2 = {
-            minWidth: "55vw"
+            // minWidth: "600"
         }
 
         const styles3 = {...styles, ...styles2}
@@ -135,7 +135,7 @@ export default class Form extends React.Component {
         
         return (
             <div id="overlay" style={{display: this.props.state.show ? "flex" : "none"}}>
-                <div className="form" style={this.props.state.showExperienceBox ? styles2 : null}>
+                <div className="form" style={{minWidth: "600px", maxHeight: "98vh", overflow: "auto"}}>
                     <div className="form-title">
                         <h1 style={{textAlign: "center"}}>{
                             this.props.state.showExperienceBox ? "Add Experience" :
@@ -167,6 +167,17 @@ export default class Form extends React.Component {
                                         this.props.submit('skill')
                                         this.props.reset();
                                     }}>Add Skill</button> 
+                                    <button onClick={this.props.submit}>Close Edit</button>
+                                </div>
+
+                                :
+
+                                this.props.state.showSkillBoxEdit ?
+                                <div style={{display: "flex", justifyContent: "space-between", width: "100%"}}>
+                                    <button onClick={() => {
+                                        this.props.publishEdit()
+                                        this.props.submit();
+                                    }}>Publish Edit</button> 
                                     <button onClick={this.props.submit}>Close Edit</button>
                                 </div>
 

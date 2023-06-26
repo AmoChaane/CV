@@ -156,14 +156,15 @@ class App extends React.Component {
         id: "skill",
         id2: uniqid()
       },
-      // {
-      //   text: "",
-      //   type: "text",
-      //   name: "skillEdit",
-      //   show: false,
-      //   id: "skillEdit",
-      //   id2: uniqid()
-      // },
+      {
+        text: "",
+        type: "text",
+        name: "skillEdit",
+        show: false,
+        id: "skillEdit",
+        id2: uniqid(),
+        skillId: ""
+      },
       {
         text: "",
         type: "text",
@@ -349,7 +350,8 @@ class App extends React.Component {
       showExperienceEditBox: false,// When showExperienceEditBox is true, our experience edit input box is displayed
       showSummary: false, // When showSummary is true, our profile/summary input box is displayed
       showReferences: false,
-      showReferencesEdit: false
+      showReferencesEdit: false,
+      showSkillBoxEdit: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -371,14 +373,20 @@ class App extends React.Component {
     this.showSummary = this.showSummary.bind(this);
     this.showProjectBox = this.showProjectBox.bind(this);
     this.showReferences = this.showReferences.bind(this);
+    this.showSkillBoxEdit = this.showSkillBoxEdit.bind(this);
     this.showReferencesEdit = this.showReferencesEdit.bind(this);
     this.alternateAddress = this.alternateAddress.bind(this);
     this.alternateReferences = this.alternateReferences.bind(this);
     this.alternateExperience = this.alternateExperience.bind(this);
-    // this.editSkillItem = this.editSkillItem.bind(this);
-    // this.handleEditSkillChange = this.handleEditSkillChange.bind(this);
-    
+    this.editSkillItem = this.editSkillItem.bind(this);
+    this.handleEditSkillChange = this.handleEditSkillChange.bind(this);
+    this.publishEdit = this.publishEdit.bind(this);
+
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(this.state.info[this.state.info.findIndex(k => k.name === "skillEdit")]);
+  // }
 
   // This function runs everytime we edit an input box
   handleChange(event, id) {
@@ -394,49 +402,48 @@ class App extends React.Component {
     });
   }
 
-  // handleEditSkillChange(event, id) {
-  //   const {value} = event.target;
+  // runs everytime our skilledit input is changed
+  handleEditSkillChange(event) {
+    const {value} = event.target;
 
-  //   this.setState(prev => {
-  //     const arr = prev.info[prev.info.length - 1];
-  //     arr.map(skill => {
-  //       if(skill.id === id) {
-  //         skill.text = value
-  //       }
-  //     })
-  //     const obj = [...prev.info];
-  //     obj[obj.length - 1] = arr;
-  //     return {...prev, info: obj}
-  //   });
-  // }
+    this.setState(prev => { 
+      const arr = [...prev.info]
+      arr[arr.findIndex(k => k.name === "skillEdit")].text = value;
+      return {
+        ...prev,
+        info: arr
+      }
+    });
+  }
 
-  // editSkillItem(id, event) {
-  //   const {value} = event.target;
+  editSkillItem(id) {
+    this.setState(prev => {
+      const skill = prev.info[prev.info.findIndex(k => k.name === "skillEdit")];
+      const skillsArray = [...prev.info[prev.info.length - 1]];
+      skill.text = skillsArray.find(i => i.id === id).text;
+      skill.skillId = id;
+      const arr = [...prev.info];
+      arr[arr.findIndex(k => k.name === "skillEdit")] = skill;
+      return {
+        ...prev,
+        info: arr
+      }
+    })
+  }
 
-  //   this.setState(prev => {
-  //     const skillsArray = [...prev.info[prev.info.length - 1]]; // array for the skills array
-  //     let array;
-  //     skillsArray.forEach(skill => { // skill is each skill in the array
-  //       if(skill.id === id) { 
-  //         // skill.text = text
-  //         array = prev.info;
-  //         const index = array.findIndex((elem) => {
-  //           return elem.name === 'skillEdit'
-  //         })
-  //         array[index] = {...array[index], text: skill.text}
-  //         // return {...prev, info: arr}
-  //       }
-  //     })
-  //     skillsArray.map(skill => {
-  //       if(skill.id === id) {
-  //         skill.text = value
-  //       }
-  //     })
-  //     const obj = [...prev.info];
-  //     obj[obj.length - 1] = skillsArray;
-  //     return {...prev, info: obj}
-  //   });
-  // }
+  publishEdit() {
+    this.setState(prev => {
+      const skillsArray = prev.info[prev.info.length - 1];
+      const skill = prev.info[prev.info.findIndex(k => k.name === "skillEdit")];
+      skillsArray[skillsArray.findIndex(k => k.id === skill.skillId)].text = skill.text;
+      const arr = [...prev.info]
+      arr[arr.length - 1] = skillsArray;
+      return {
+        ...prev,
+        info: arr
+      }
+    })
+  }
 
   alternateAddress() {
     this.setState(prev => {
@@ -532,6 +539,7 @@ class App extends React.Component {
     str === "refPosition" ? "Position" :
     str === "refNumber" ? "Number" :
     str === "refCompany" ? "Company" :
+    str === "skillEdit" ? "Edit Skill" :
     str[0].toUpperCase() + str.slice(1).toLowerCase()
 }
 
@@ -546,6 +554,7 @@ class App extends React.Component {
     this.setState({showProjectBox: false});
     this.setState({showReferences: false});
     this.setState({showReferencesEdit: false});
+    this.setState({showSkillBoxEdit: false});
 
   }
 
@@ -560,6 +569,7 @@ class App extends React.Component {
     this.setState({showProjectBox: false});
     this.setState({showReferences: false});
     this.setState({showReferencesEdit: false});
+    this.setState({showSkillBoxEdit: false});
   }
 
   // Updates the below property to true so that only infomation related to that property is shown on our form.
@@ -573,6 +583,20 @@ class App extends React.Component {
     this.setState({showProjectBox: false});
     this.setState({showReferences: false});
     this.setState({showReferencesEdit: false});
+    this.setState({showSkillBoxEdit: false});
+  }
+
+  showSkillBoxEdit() {
+    this.setState({showSkillBoxEdit: true});
+    this.setState({showEducationBox: false});
+    this.setState({showSkillBox: false});
+    this.setState({showExperienceBox: false});
+    this.setState({showExperienceEditBox: false});
+    this.setState({showSummary: false});
+    this.setState({showProjectBox: false});
+    this.setState({showReferences: false});
+    this.setState({showReferencesEdit: false});
+    // showSkillBoxEdit
   }
 
   showExperienceBox() {
@@ -584,6 +608,7 @@ class App extends React.Component {
     this.setState({showProjectBox: false});
     this.setState({showReferences: false});
     this.setState({showReferencesEdit: false});
+    this.setState({showSkillBoxEdit: false});
   }
 
   // Updates the below property to true so that only infomation related to that property is shown on our form.
@@ -594,6 +619,7 @@ class App extends React.Component {
     this.setState({showProjectBox: false});
     this.setState({showReferences: false});
     this.setState({showReferencesEdit: false});
+    this.setState({showSkillBoxEdit: false});
   }
 
   // Updates the below property to true so that only infomation related to that property is shown on our form.
@@ -607,6 +633,7 @@ class App extends React.Component {
     this.setState({showExperienceBox: false});
     this.setState({showReferences: false});
     this.setState({showReferencesEdit: false});
+    this.setState({showSkillBoxEdit: false});
   }
 
   // Updates the below property to true so that only infomation related to that property is shown on our form.
@@ -620,6 +647,7 @@ class App extends React.Component {
     this.setState({showSummary: false});
     this.setState({showReferences: false});
     this.setState({showReferencesEdit: false});
+    this.setState({showSkillBoxEdit: false});
   }
 
   showReferences() {
@@ -631,6 +659,7 @@ class App extends React.Component {
     this.setState({showExperienceBox: false});
     this.setState({showSummary: false});
     this.setState({showReferencesEdit: false});
+    this.setState({showSkillBoxEdit: false});
   }
 
   showReferencesEdit() {
@@ -638,6 +667,7 @@ class App extends React.Component {
     this.setState({showSummary: false});
     this.setState({showProjectBox: false});
     this.setState({showReferences: false});
+    this.setState({showSkillBoxEdit: false});
   }
 
 
@@ -851,7 +881,8 @@ class App extends React.Component {
           reset={this.reset}
           showProjectBox={this.showProjectBox}
           alternateAddress={this.alternateAddress}
-          // editSkillItem={this.editSkillItem}
+          showSkillBoxEdit={this.showSkillBoxEdit}
+          editSkillItem={this.editSkillItem}
         />
         <MainInfo 
           state={this.state} 
@@ -860,6 +891,8 @@ class App extends React.Component {
           showExperienceBox={this.showExperienceBox}
           showReferences={this.showReferences}
           showReferencesEdit={this.showReferencesEdit}
+          showSkillBoxEdit={this.showSkillBoxEdit}
+          
           reset={this.reset}
           delete={this.delete} 
           add={this.add} 
@@ -889,8 +922,9 @@ class App extends React.Component {
             val={this.val}
             capital={this.capital}
             showSummary={this.showSummary}
-            // handleEditSkillChange={this.handleEditSkillChange}
-            // editSkillItem={this.editSkillItem}
+            showSkillBoxEdit={this.showSkillBoxEdit}
+            handleEditSkillChange={this.handleEditSkillChange}
+            publishEdit={this.publishEdit}
           />
         }
         {/* <PDFDownloadLink document={MyDocument} fileName="my_website.pdf">

@@ -103,7 +103,7 @@ body {
     align-items: center;
 }
 
-.education-info:hover .fa-trash {
+.education-info:hover .fa-trash, .education-info:hover .fa-pencil {
     display: block;
 }
 
@@ -117,7 +117,7 @@ body {
     align-items: center;
 }
 
-.education-info:hover .fa-trash {
+.education-info:hover .fa-trash, .education-info:hover .fa-pencil {
     display: block;
 }
 
@@ -236,7 +236,7 @@ li {
 
 .personal-info {
     width: 100%;
-    height: 45vh;
+    /* height: 45vh; */
     /* border: 1px solid red; */
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -483,7 +483,7 @@ img {
 }
 
 .form {
-    padding: 2%;
+    padding: 25px;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -601,11 +601,15 @@ button:hover {
 }
 
 .fa-trash {
+    margin-right: 5px;
+}
+
+.fa-trash, .fa-pencil {
     display: none;
     cursor: pointer;
 }
 
-.skill-holder:hover .fa-trash {
+.skill-holder:hover .fa-trash, .skill-holder:hover .fa-pencil {
     display: block;
 }
 
@@ -655,6 +659,7 @@ button:hover {
     position: relative;
     min-width: 250px;
     max-width: 400px;
+    min-height: 280px;
 }
 
 

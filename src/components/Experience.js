@@ -1,6 +1,5 @@
 import React from "react"
 import ExperienceInfo from "./ExperienceInfo";
-import uniqid from 'uniqid';
 
 export default class Experience extends React.Component {
     constructor() {
@@ -12,7 +11,7 @@ export default class Experience extends React.Component {
         const styles2 = {fontWeight: "900", textDecoration: "underline", fontSize: "1.2em"};
         const experience = this.props.experience.map(i => <ExperienceInfo info={i} key={i.id} delete={this.props.delete} id={i.id} edit={this.props.edit} click={this.props.click} showExperienceBox={this.props.showExperienceBox} showExperienceEditBox={this.props.showExperienceEditBox} showInput={this.props.showInput}/>);
 
-        return <div className="experience">
+        return <div className="experience" style={{width: "100%"}}>
             <div style={{marginBottom: "3%"}}>
                 <div style={styles}>
                     <h3 style={{paddingLeft: "5%"}}>EXPERIENCE</h3>

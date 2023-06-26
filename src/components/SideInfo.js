@@ -26,7 +26,7 @@ export default class SideInfo extends React.Component {
             }
             <NameAndRole state={this.props.state} text={this.props.text} click={this.props.click}/>
             <Education education={this.props.state.education} text={this.props.text} click={this.props.click} showEducationBox={this.props.showEducationBox} showExperienceBox={this.props.showExperienceBox} delete={this.props.delete}/>
-            <Skills state={this.props.state} text={this.props.text} click={this.props.click} delete={this.props.delete} add={this.props.add} handle={this.props.handle} addSkill={this.props.addSkill} showSkillBox={this.props.showSkillBox} showEducationBox={this.props.showEducationBox} editSkillItem={this.props.editSkillItem}/>
+            <Skills state={this.props.state} text={this.props.text} click={this.props.click} delete={this.props.delete} add={this.props.add} handle={this.props.handle} addSkill={this.props.addSkill} showSkillBox={this.props.showSkillBox} showEducationBox={this.props.showEducationBox} editSkillItem={this.props.editSkillItem} showSkillBoxEdit={this.props.showSkillBoxEdit}/>
             {/* <Projects state={this.props.state} text={this.props.text} click={this.props.click} delete={this.props.delete} add={this.props.add} handle={this.props.handle} addSkill={this.props.addSkill} showSkillBox={this.props.showSkillBox} showEducationBox={this.props.showEducationBox} showProjectBox={this.props.showProjectBox}/> */}
 
         </div>
