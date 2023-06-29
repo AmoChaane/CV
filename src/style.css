@@ -29,6 +29,24 @@ body {
     /* overflow-y: scroll; */
 }
 
+.pdf-download {
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    border-radius: 10px;
+    background-color: #EAE9E8;
+    padding: 10px;
+    font-weight: 600;
+    z-index: 10;
+    cursor: pointer;
+    transition: all .3s;
+    font-size: 1.7em;
+}
+
+.pdf-download:hover {
+    transform: scale(1.08);
+}
+
 
 .firstName, .lastName {
     /* font-size: 2.6em; */

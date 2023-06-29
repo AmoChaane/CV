@@ -17,6 +17,7 @@ class App extends React.Component {
       showAddress: true,
       showReferencesSection: true,
       showExperience: true,
+      download: false,
       info: [{ // This array holds all the info we have except for education and experience
         text: "280 Drawwer Crescent",
         type: "text",
@@ -857,80 +858,79 @@ class App extends React.Component {
   }
 
   render() {
-    const MyDocument = (
-      <Document>
-        <Page>
-          <View>
-            <Text>My Website</Text>
-          </View>
-        </Page>
-      </Document>
-    );
-
     return (
-      <div className="container">
-        
-        <SideInfo state={this.state} 
-          text={this.text} 
-          click={this.click} 
-          delete={this.delete} 
-          add={this.add} 
-          showSkillBox={this.showSkillBox}
-          showEducationBox={this.showEducationBox}
-          showExperienceBox={this.showExperienceBox}
-          reset={this.reset}
-          showProjectBox={this.showProjectBox}
-          alternateAddress={this.alternateAddress}
-          showSkillBoxEdit={this.showSkillBoxEdit}
-          editSkillItem={this.editSkillItem}
-        />
-        <MainInfo 
-          state={this.state} 
-          text={this.text} 
-          click={this.click}
-          showExperienceBox={this.showExperienceBox}
-          showReferences={this.showReferences}
-          showReferencesEdit={this.showReferencesEdit}
-          showSkillBoxEdit={this.showSkillBoxEdit}
-          
-          reset={this.reset}
-          delete={this.delete} 
-          add={this.add} 
-          edit={this.edit}
-          showExperienceEditBox={this.showExperienceEditBox}
-          showInput={this.showInput}
-          previewImage={this.previewImage}
-          capital={this.capital}
-          showSummary={this.showSummary}
-          alternateReferences={this.alternateReferences}
-          alternateExperience={this.alternateExperience}
-        />
-        <div>
-        </div>
-        {
-          this.state.show && 
-          <Form 
-            info={this.state.info} 
-            handleChange={this.handleChange} 
-            state={this.state} 
+      !this.state.download ?
+        <div className="container">
+          <span className="pdf-download" onClick={() => {
+            this.setState(prev => {
+              return {
+                ...prev,
+                download: true
+              }
+            })
+          }}>
+            <i className="fa-solid fa-download"></i>
+          </span>
+          <SideInfo state={this.state} 
             text={this.text} 
             click={this.click} 
-            submit={this.submit} 
-            add={this.add}
+            delete={this.delete} 
+            add={this.add} 
+            showSkillBox={this.showSkillBox}
+            showEducationBox={this.showEducationBox}
+            showExperienceBox={this.showExperienceBox}
             reset={this.reset}
+            showProjectBox={this.showProjectBox}
+            alternateAddress={this.alternateAddress}
+            showSkillBoxEdit={this.showSkillBoxEdit}
+            editSkillItem={this.editSkillItem}
+          />
+          <MainInfo 
+            state={this.state} 
+            text={this.text} 
+            click={this.click}
+            showExperienceBox={this.showExperienceBox}
+            showReferences={this.showReferences}
+            showReferencesEdit={this.showReferencesEdit}
+            showSkillBoxEdit={this.showSkillBoxEdit}
+            
+            reset={this.reset}
+            delete={this.delete} 
+            add={this.add} 
             edit={this.edit}
-            val={this.val}
+            showExperienceEditBox={this.showExperienceEditBox}
+            showInput={this.showInput}
+            previewImage={this.previewImage}
             capital={this.capital}
             showSummary={this.showSummary}
-            showSkillBoxEdit={this.showSkillBoxEdit}
-            handleEditSkillChange={this.handleEditSkillChange}
-            publishEdit={this.publishEdit}
+            alternateReferences={this.alternateReferences}
+            alternateExperience={this.alternateExperience}
           />
-        }
-        {/* <PDFDownloadLink document={MyDocument} fileName="my_website.pdf">
-          {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download PDF')}
-        </PDFDownloadLink> */}
-      </div>
+          <div>
+          </div>
+          {
+            this.state.show && 
+            <Form 
+              info={this.state.info} 
+              handleChange={this.handleChange} 
+              state={this.state} 
+              text={this.text} 
+              click={this.click} 
+              submit={this.submit} 
+              add={this.add}
+              reset={this.reset}
+              edit={this.edit}
+              val={this.val}
+              capital={this.capital}
+              showSummary={this.showSummary}
+              showSkillBoxEdit={this.showSkillBoxEdit}
+              handleEditSkillChange={this.handleEditSkillChange}
+              publishEdit={this.publishEdit}
+            />
+          }
+        </div>
+        :
+        <Pdf state={this.state}/>
     )
   }
 }
