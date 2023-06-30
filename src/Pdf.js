@@ -243,16 +243,6 @@ function Pdf(props) {
                   <View style={{height: "0.8px", width: "25%", backgroundColor: '#5d5c5c', marginTop: "3px"}}></View>
                 </View>
                 <View style={styles.educationItems}>
-                  {/* <View>
-                    <Text style={styles.educationInfo2}>BSC IT</Text>
-                    <Text style={styles.educationInfo2}>RICHFIELD COLLEGE</Text>
-                    <Text style={styles.educationInfo}>2023 - 2024</Text>
-                  </View>
-                  <View>
-                    <Text style={styles.educationInfo2}>BSC IT</Text>
-                    <Text style={styles.educationInfo2}>RICHFIELD COLLEGE</Text>
-                    <Text style={styles.educationInfo}>2023 - 2024</Text>
-                  </View> */}
                   {educationData}
                 </View>
               </View>
@@ -262,9 +252,6 @@ function Pdf(props) {
                     <View style={{height: "0.8px", width: "25%", backgroundColor: '#5d5c5c', marginTop: "3px"}}></View>
                 </View>
                 <View style={styles.skills}>
-                  {/* <View style={{display: "flex", flexDirection: "row", alignItems: "center"}}><Text style={{color: "#5d5c5c", marginRight: "5px"}}>&bull;</Text><Text style={styles.skill}> HTML5</Text></View>
-                  <View style={{display: "flex", flexDirection: "row", alignItems: "center"}}><Text style={{color: "#5d5c5c", marginRight: "5px"}}>&bull;</Text><Text style={styles.skill}> CSS</Text></View>
-                  <View style={{display: "flex", flexDirection: "row", alignItems: "center"}}><Text style={{color: "#5d5c5c", marginRight: "5px"}}>&bull;</Text><Text style={styles.skill}> JAVASCRIPT</Text></View> */}
                   {skillsData}
                 </View>
               </View>
@@ -286,18 +273,24 @@ function Pdf(props) {
                   <View style={styles.personalItem}><Image src={phone} style={{width: "auto", height: "14px"}} /></View>
                   <Text style={styles.personalItemText}>{state.info.find(i => i.name === "number").text}3</Text>
                 </View>
-                <View style={styles.personalItemHolder}>
-                  <View style={styles.personalItem}><Image src={website} style={{width: "auto", height: "14px"}} /></View>
-                  <Text style={styles.personalItemText}>{state.info.find(i => i.name === "website").text}</Text>
-                </View>
-                <View style={styles.personalItemHolder}>
-                  <View style={styles.personalItem}><Image src={linkedin} style={{width: "auto", height: "14px"}} /></View>
-                  <Text style={styles.personalItemText}>{state.info.find(i => i.name === "linkedin").text}</Text>
-                </View>
-                <View style={styles.personalItemHolder}>
+                { state.info.find(i => i.name === "website").text && 
+                  <View style={styles.personalItemHolder}>
+                    <View style={styles.personalItem}><Image src={website} style={{width: "auto", height: "14px"}} /></View>
+                    <Text style={styles.personalItemText}>{state.info.find(i => i.name === "website").text}</Text>
+                  </View>
+                }
+                { state.info.find(i => i.name === "linkedin").text &&
+                  <View style={styles.personalItemHolder}>
+                    <View style={styles.personalItem}><Image src={linkedin} style={{width: "auto", height: "14px"}} /></View>
+                    <Text style={styles.personalItemText}>{state.info.find(i => i.name === "linkedin").text}</Text>
+                  </View>
+                }
+                { state.info.find(i => i.name === "github").text &&
+                  <View style={styles.personalItemHolder}>
                   <View style={styles.personalItem}><Image src={github} style={{width: "auto", height: "14px"}} /></View>
                   <Text style={styles.personalItemText}>{state.info.find(i => i.name === "github").text}</Text>
                 </View>
+                }
               </View>
             </View>
             {/* --------------------------------Profile------------------------------------------------- */}
@@ -329,21 +322,6 @@ function Pdf(props) {
 
                   {/* ------------Experience Items Holder------------------------------ */}
                   <View style={{display: "flex", flexDirection: "column", rowGap: "50px"}}>
-                    {/* <View style={{marginLeft: "30px"}}>
-                      <Text style={styles.experienceText}>SENIOR WEB DEVELOPER</Text>
-                      <View style={{display: "flex", flexDirection: "row", columnGap: "5px", alignItems: "center"}}>
-                        <Text style={styles.experienceText}>GOOGLE</Text>
-                        <Text style={styles.bullet}>&bull;</Text>
-                        <Text style={styles.experienceText}>2020 to 2023</Text>
-                      </View>
-                      <Text style={styles.experienceText2}>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt tempora, debitis magni 
-                      reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione modi asperiores dolorum 
-                      fugiat saepe cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sint nesciunt 
-                      tempora, debitis magni reiciendis ipsam eum consequatur quos quae voluptate recusandae suscipit ratione 
-                      modi asperiores dolorum fugiat saepe cupiditate.
-                      </Text>
-                    </View> */}
                     {experienceData}
                   </View>
                 </View>
@@ -358,20 +336,6 @@ function Pdf(props) {
                 </View>
                 {/* ------------Reference Items Holder------------------------------ */}
                 <View style={{display: "flex", flexDirection: "column", rowGap: "50px"}}>
-                  {/* <View style={{display: "flex", flexDirection: "column", rowGap: "7px"}}>
-                    <Text style={styles.referencesText}>JOHN STURGIS</Text>
-                    <Text style={styles.referencesText}>SENIOR DEVELOPER</Text>
-                    <Text style={styles.referencesText}>NETFLIX</Text>
-                    <Text style={styles.referencesText}>083 173 1728</Text>
-                    <Text style={styles.referencesText}>john.sturgis@gmail.com</Text>
-                  </View>
-                  <View style={{display: "flex", flexDirection: "column", rowGap: "7px"}}>
-                    <Text style={styles.referencesText}>JOHN STURGIS</Text>
-                    <Text style={styles.referencesText}>SENIOR DEVELOPER</Text>
-                    <Text style={styles.referencesText}>NETFLIX</Text>
-                    <Text style={styles.referencesText}>083 173 1728</Text>
-                    <Text style={styles.referencesText}>john.sturgis@gmail.com</Text>
-                  </View> */}
                   {referencesData}
                 </View>
               </View>
