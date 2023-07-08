@@ -1,4 +1,4 @@
-import { Document, Page, Text, View, StyleSheet, PDFViewer, Font, Image} from "@react-pdf/renderer";
+import { Document, Page, Text, View, StyleSheet, PDFViewer, Font, Image, Link} from "@react-pdf/renderer";
 import location from "./images/location.png"
 import "./pdf.css"
 import Asap from './fonts/Asap-ThinItalic.ttf';
@@ -151,6 +151,13 @@ function Pdf(props) {
       paddingRight: "50px",
       // border: "1px solid red"
     },
+    experienceText3: {
+      fontSize: "17px",
+      fontFamily: "AsapLight",
+      color: "#5d5c5c",
+      paddingRight: "50px",
+      // border: "1px solid red"
+    },
     bullet: {
       fontSize: "29px",
       fontFamily: "AsapLight",
@@ -195,6 +202,18 @@ function Pdf(props) {
       </View>
     )
   })
+  
+  const projectsData = state.projects.map(i => {
+    return (
+      <View key={i.id} style={{marginLeft: "30px", display: "flex", flexDirection: "column"}}>
+        <Text style={styles.experienceText3}>{i.summary}</Text>
+        <View>
+          {/* <Text style={styles.experienceText2}>{i.url}</Text> this one gives problems sometimes */}
+          <Link style={styles.experienceText2} src={i.url}>{i.url}</Link>
+        </View>
+      </View>
+    )
+  });
 
   const referencesData = state.references.map(i => {
     return (
@@ -337,6 +356,20 @@ function Pdf(props) {
                 {/* ------------Reference Items Holder------------------------------ */}
                 <View style={{display: "flex", flexDirection: "column", rowGap: "50px"}}>
                   {referencesData}
+                </View>
+              </View>
+            }
+            {/* --------------------------------Projects------------------------------------------------- */}
+            {
+              state.showProjects &&
+              <View>
+                <View style={{marginBottom: "17px"}}>
+                      <Text style={{margin: "0 0 5px 30px", letterSpacing: "5px", fontSize: "19px", color: "#5d5c5c"}}>PROJECTS</Text>
+                      <View style={{height: "0.8px", width: "25%", backgroundColor: '#5d5c5c', marginTop: "3px"}}></View>
+                </View>
+                {/* ------------Projects Items Holder------------------------------ */}
+                <View style={{display: "flex", flexDirection: "column", rowGap: "30px"}}>
+                  {projectsData}
                 </View>
               </View>
             }

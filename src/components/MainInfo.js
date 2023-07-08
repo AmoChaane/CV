@@ -3,6 +3,7 @@ import PersonalInfo from "./PersonalInfo";
 import Summary from "./Summary";
 import Experience from "./Experience";
 import References from "./References";
+import Projects from "./Projects";
 
 export default class MainInfo extends React.Component {
     constructor() {
@@ -62,7 +63,36 @@ export default class MainInfo extends React.Component {
                     className="add">
                     <i className="fa-solid fa-plus"></i> Add References</p>
                 </div>
-            }       
+            }
+            {
+                this.props.state.showProjects ?
+                <Projects 
+                    state={this.props.state} 
+                    text={this.props.text} 
+                    click={this.props.click} 
+                    delete={this.props.delete} 
+                    add={this.props.add} 
+                    handle={this.props.handle} 
+                    addSkill={this.props.addSkill} 
+                    showSkillBox={this.props.showSkillBox} 
+                    showEducationBox={this.props.showEducationBox} 
+                    showProjectBox={this.props.showProjectBox}
+                    showProjectsEdit={this.props.showProjectsEdit}
+                    projects={this.props.state.projects}
+                    showInput={this.props.showInput}
+                    edit={this.props.edit}
+                    alternateProjects={this.props.alternateProjects}
+                />
+                :
+                <div className="add-section" style={{background: "#EAE9E8"}}
+                onClick={() => {
+                    this.props.alternateProjects()
+                }}>
+                    <p 
+                    className="add">
+                    <i className="fa-solid fa-plus"></i> Add Projects</p>
+                </div>
+            }
         </div>
     }
 }

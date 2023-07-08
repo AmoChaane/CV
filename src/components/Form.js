@@ -111,6 +111,19 @@ export default class Form extends React.Component {
             });
         });
 
+        const inputs4 = ["summary", "url"].map(i => {
+            return this.props.state.projects.map(j => {
+                if(j.show) {
+                    return (
+                        <div className="input-holder" key={j.id}>
+                            <label>{this.props.capital(i)}</label>
+                            <input type="text" name={i} key={i} value={this.props.val(i, j.id, "projects")} onChange={event => this.props.edit(event, j.id, i, "projects")}/>
+                        </div>
+                    )
+                }
+            })
+        })
+
         const styles = {
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
@@ -144,6 +157,7 @@ export default class Form extends React.Component {
                             // this.props.state.showSkillBoxEdit ? "Edit Skill" :
                             this.props.state.showSummary ? "Edit Profile" : 
                             this.props.state.showReferences ? "Add Reference" :
+                            this.props.state.showProjectBox ? "Add Project" :
                             "Edit"
                         }</h1>
                         <hr />
@@ -154,8 +168,11 @@ export default class Form extends React.Component {
                     }>
                         {this.props.state.showExperienceEditBox ? inputs2 : 
                         this.props.state.showReferencesEdit ? inputs3 :
+                        this.props.state.showProjectsEdit ? inputs4 :
                         inputs}
                     </div>
+
+                    {/* ---------------------BUTTONS------------------------ */}
 
                     {
                         <div className="buttons">
@@ -164,7 +181,7 @@ export default class Form extends React.Component {
                                 <div style={{display: "flex", justifyContent: "space-between", width: "100%"}}>
                                     <button onClick={() => {
                                         this.props.add("skills");
-                                        this.props.submit('skill')
+                                        this.props.submit()
                                         this.props.reset();
                                     }}>Add Skill</button> 
                                     <button onClick={this.props.submit}>Close Edit</button>
@@ -187,7 +204,7 @@ export default class Form extends React.Component {
                                 <div style={{display: "flex", justifyContent: "space-between", width: "100%"}}>
                                     <button onClick={() => {
                                         this.props.add("education");
-                                        this.props.submit('education')
+                                        this.props.submit()
                                         this.props.reset();
                                     }}>Add Education</button> 
                                     <button onClick={this.props.submit}>Close Edit</button>
@@ -199,7 +216,7 @@ export default class Form extends React.Component {
                                 <div style={{display: "flex", justifyContent: "space-between", width: "100%"}}>
                                     <button onClick={() => {
                                         this.props.add("experience");
-                                        this.props.submit('experience')
+                                        this.props.submit()
                                         this.props.reset();
                                     }}>Add Experience</button> 
                                     <button onClick={this.props.submit}>Close Edit</button>
@@ -211,13 +228,27 @@ export default class Form extends React.Component {
                                 <div style={{display: "flex", justifyContent: "space-between", width: "100%"}}>
                                     <button onClick={() => {
                                         this.props.add("references");
-                                        this.props.submit('references')
+                                        this.props.submit()
                                         this.props.reset();
                                     }}>Add Reference</button> 
                                     <button onClick={this.props.submit}>Close Edit</button>
                                 </div>
 
                                 :
+
+                                this.props.state.showProjectBox ?
+                                <div style={{display: "flex", justifyContent: "space-between", width: "100%"}}>
+                                    <button onClick={() => {
+                                        this.props.add("projects");
+                                        this.props.submit()
+                                        this.props.reset();
+                                    }}>Add Project</button> 
+                                    <button onClick={this.props.submit}>Close Edit</button>
+                                </div>
+
+                                :
+
+                                
                                 
                                 <button onClick={() => {
                                     this.props.submit();

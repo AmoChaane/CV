@@ -16,7 +16,7 @@ export default class References extends React.Component {
             <div className="references" style={{width: "100%"}}>
                 <div style={{marginBottom: "3%"}}>
                     <div style={styles}>
-                        <h3 style={{paddingLeft: "5%"}}>REFERENCES</h3>
+                        <h3 className="h3" style={{paddingLeft: "5%"}}>REFERENCES</h3>
                         <p className="references-p p" style={styles2} onClick={() => {
                                 this.props.click(["refName", "refCompany", "refNumber", "refEmail", "refPosition"]);
                                 this.props.showReferences();

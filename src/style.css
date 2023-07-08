@@ -155,12 +155,9 @@ body {
     flex-direction: column;
 } */
 
-.skills {
-    /* font-size: 1.1em; */
-    /* border: 1px solid red; */
-}
 
-.skills-title, h3 {
+
+.skills-title, .h3 {
     font-size: 1.6em;
     letter-spacing: 0.2em;
 }
@@ -190,7 +187,7 @@ p {
 }
 
 .skills-points .add {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     display: none;
     cursor: pointer;
     font-weight: 900
@@ -208,7 +205,7 @@ p {
 }
 
 .skills-points .add {
-    margin-top: 10px;
+    margin-bottom: 10px;
     display: none;
     cursor: pointer;
     font-weight: 900
@@ -391,10 +388,6 @@ img {
     column-gap: 20px;
 }
 
-.experience-buttons, .references-buttons {
-    /* display: flex; */
-    display: none;
-}
 
 .experience-info:hover .experience-buttons, .references-info:hover .references-buttons {
     display: flex;
@@ -405,6 +398,13 @@ img {
     display: flex;
     flex-direction: column;
     row-gap: 50px;
+}
+
+
+.projects-info-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 35px;
 }
 
 
@@ -706,3 +706,4 @@ button:hover {
 .add-section:hover {
     transform: scale(1.05);
 }
+

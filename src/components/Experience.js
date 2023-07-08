@@ -14,7 +14,7 @@ export default class Experience extends React.Component {
         return <div className="experience" style={{width: "100%"}}>
             <div style={{marginBottom: "3%"}}>
                 <div style={styles}>
-                    <h3 style={{paddingLeft: "5%"}}>EXPERIENCE</h3>
+                    <h3 className="h3" style={{paddingLeft: "5%"}}>EXPERIENCE</h3>
                     <p
                      className="experience-p p" style={styles2} onClick={() => {
                             this.props.click(["title", "companyName", "experienceStartDate", "experienceEndDate", "description"]);

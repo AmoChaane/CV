@@ -9,7 +9,7 @@ export default class Summary extends React.Component {
         return <div className="summary section">
             <div style={{marginBottom: "3%"}}>
                 <div>
-                    <h3 style={{paddingLeft: "5%"}}>PROFILE</h3>
+                    <h3 className="h3" style={{paddingLeft: "5%"}}>PROFILE</h3>
                     <p className="profile-para p" onClick={() => {
                         this.props.click(['profile', 'profile2', 'profile3']);
                         this.props.showSummary();

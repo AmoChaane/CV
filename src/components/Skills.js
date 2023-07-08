@@ -31,12 +31,13 @@ export default class Skills extends React.Component {
                 <div style={{height: "1px", width: "25%", backgroundColor: "#5D5C5C", marginTop: "10px"}}></div>
             </span>
             <ul className="skills-points">
-                {skills}
                 <p className="add" onClick={() => {
                     this.props.click(["skill"]);
                     this.props.showSkillBox();
                 }}>
                     <i className="fa-solid fa-plus"></i> Add Skill</p>
+                {skills}
+                
             </ul>
         </div>
     }

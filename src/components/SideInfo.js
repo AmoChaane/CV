@@ -3,7 +3,7 @@ import Address from "./Address";
 import Skills from "./Skills";
 import Education from "./Education";
 import NameAndRole from "./NameAndRole";
-import Projects from "./Projects";
+// import Projects from "./Projects";
 
 export default class SideInfo extends React.Component {
     constructor(props) {
