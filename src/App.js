@@ -19,13 +19,15 @@ class App extends React.Component {
       showExperience: true,
       showProjects: true,
       download: false,
+      maxLength: 0,
       info: [{ // This array holds all the info we have except for education and experience
         text: "280 Drawwer Crescent",
         type: "text",
         name: "street",
         show: false,
         id: "street",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "Derdepoort",
@@ -33,7 +35,8 @@ class App extends React.Component {
         name: "suburb",
         show: false,
         id: "suburb",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "Pretoria",
@@ -41,7 +44,8 @@ class App extends React.Component {
         name: "city",
         show: false,
         id: "city",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "South Africa",
@@ -49,7 +53,8 @@ class App extends React.Component {
         name: "country",
         show: false,
         id: "country",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "Amogelang",
@@ -57,7 +62,8 @@ class App extends React.Component {
         name: "firstName",
         show: false,
         id: "firstName",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "Chaane",
@@ -65,7 +71,8 @@ class App extends React.Component {
         name: "lastName",
         show: false,
         id: "lastName",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "Web Developer",
@@ -73,7 +80,8 @@ class App extends React.Component {
         name: "role",
         show: false,
         id: "role",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "amogelangchaane200@gmail.com",
@@ -81,7 +89,8 @@ class App extends React.Component {
         name: "email",
         show: false,
         id: "email",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "079 998 2723",
@@ -89,7 +98,8 @@ class App extends React.Component {
         name: "number",
         show: false,
         id: "number",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "www.amochaane.com",
@@ -97,7 +107,8 @@ class App extends React.Component {
         name: "website",
         show: false,
         id: "website",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "https://www.linkedin.com/in/amogelang-chaane-6044391bb/",
@@ -105,7 +116,8 @@ class App extends React.Component {
         name: "linkedin",
         show: false,
         id: "linkedin",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "https://github.com/AmoChaane",
@@ -113,7 +125,8 @@ class App extends React.Component {
         name: "github",
         show: false,
         id: "github",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "2003-08-22",
@@ -121,16 +134,18 @@ class App extends React.Component {
         name: "age",
         show: false,
         id: "age",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: 
-        "As a self-taught web developer with a strong passion for coding, I am looking for opportunities to apply and expand my skills. My experience has been focused on front-end development using HTML, CSS, and JavaScript. I have also worked with the popular library, 'React', to build dynamic and responsive web applications. ",
+        "A Web Developer with a strong passion for coding, I am looking for opportunities to apply and expand my skills. My experience has been focused on front-end development using HTML, CSS, JavaScript, and React to build dynamic and responsive web applications. ",
         type: "text",
         name: "profile",
         show: false,
         id: "profile",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: 
@@ -139,7 +154,8 @@ class App extends React.Component {
         name: "profile2",
         show: false,
         id: "profile",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: 
@@ -148,7 +164,8 @@ class App extends React.Component {
         name: "profile3",
         show: false,
         id: "profile",
-        id2: uniqid()
+        id2: uniqid(),
+        standAlone: true
       },
       {
         text: "",
@@ -173,6 +190,14 @@ class App extends React.Component {
         name: "projectHeading",
         show: false,
         id: "projectHeading",
+        id2: uniqid()
+      },
+      {
+        text: "",
+        type: "text",
+        name: "projectSummary",
+        show: false,
+        id: "projectSummary",
         id2: uniqid()
       },
       {
@@ -300,10 +325,11 @@ class App extends React.Component {
         {text: "CSS", id: uniqid()}, 
         {text: "Javascript", id: uniqid()}, 
         {text: "ReactJs", id: uniqid()}, 
-        {text: "Webpack", id: uniqid()}, 
-        {text: "Fetch APIs", id: uniqid()},
-        {text: "Problem Solving", id: uniqid()},
-        {text: "Attention to detail", id: uniqid()},
+        {text: "Typescript", id: uniqid()}, 
+        {text: "Bootstrap", id: uniqid()},
+        {text: "Firebase", id: uniqid()},
+        {text: "Figma", id: uniqid()}, 
+        {text: "Webpack", id: uniqid()},
         {text: "Team Player", id: uniqid()}
       ]
     ],
@@ -345,13 +371,16 @@ class App extends React.Component {
       }
     ],
     projects: [
-      {summary: "A quiz app built with React", url: "https://amochaane.github.io/Quizzical", id: uniqid(), show: false}, 
-      {summary: "A dashboard built with HTML and CSS", url: "https://amochaane.github.io/Dashboard", id: uniqid(), show: false}, 
-      {summary: "A weather app that calls to an api", url: "https://amochaane.github.io/Weather-App", id: uniqid(), show: false}, 
-      {summary: "A basic todo list application", url: "https://amochaane.github.io/Todo-List", id: uniqid(), show: false}, 
-      {summary: "An offline multiplayer Tic Tac Toe game", url: "https://amochaane.github.io/Tic-Tac-Toe", id: uniqid(), show: false}, 
-      {summary: "A calculator", url: "https://amochaane.github.io/Calculator", id: uniqid(), show: false}, 
-      {summary: "A rock paper scissors games built with HTML, CSS, and Javascript", url: "https://amochaane.github.io/Rock-Paper-Scissors", id: uniqid(), show: false}, 
+      {summary: "An AI integrated website that provides code analysis and optimization based on user code input. Built with React along with Bootstrap and Firebase", url: "https://codepilot4.web.app", id: uniqid(), show: false, name: "Code Pilot"}, 
+      {summary: "Allows the user to customize the already designed/made CV", url: "https://amochaane.github.io/CV", id: uniqid(), show: false, name: "CV Builder"}, 
+      {summary: "Provides multiple questions/quizzes and their answers", url: "https://amochaane.github.io/Quizzical", id: uniqid(), show: false, name: "Quiz App"}, 
+      {summary: "Has weather information on most of the cities worldwide", url: "https://amochaane.github.io/Weather-App", id: uniqid(), show: false, name: "Weather App"}, 
+      {summary: "A web based game that lets you play against the COM", url: "https://amochaane.github.io/Battleship", id: uniqid(), show: false, name: "Battleship"}, 
+      {summary: "A basic todo list application", url: "https://amochaane.github.io/Todo-List", id: uniqid(), show: false, name: "Todo List"}, 
+      {summary: "An offline web based multiplayer game", url: "https://amochaane.github.io/Tic-Tac-Toe", id: uniqid(), show: false, name: "Tic Tac Toe"}, 
+      {summary: "A basic calculator", url: "https://amochaane.github.io/Calculator", id: uniqid(), show: false, name: "Calculator"}, 
+      {summary: "A web based game where you play against the COM", url: "https://amochaane.github.io/Rock-Paper-Scissors", id: uniqid(), show: false, name: "Rock Paper Scissors"},
+      {summary: "A dashboard built with HTML and CSS", url: "https://amochaane.github.io/Dashboard", id: uniqid(), show: false, name: "Dashboard"},  
     ],
       show: false,  // When show is true, our form will be displayed
       showSkillBox: false, // When showSkillBox is true, our skill input box is displayed
@@ -395,7 +424,8 @@ class App extends React.Component {
     this.handleEditSkillChange = this.handleEditSkillChange.bind(this);
     this.publishEdit = this.publishEdit.bind(this);
     this.showProjectsEdit = this.showProjectsEdit.bind(this);
-
+    this.updateMaxLength = this.updateMaxLength.bind(this);
+    this.resetAllFields = this.resetAllFields.bind(this);
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -413,7 +443,38 @@ class App extends React.Component {
       })
       arr[index] = {...arr[index], text: value}
       return {...prev, info: arr}
+    }, () => {
+      if(id == "projectSummary") {
+        this.setState({maxLength: value.length})
+      }
     });
+  }
+
+  updateMaxLength(num) {
+    this.setState(prev => {
+      return {
+        ...prev,
+        maxLength: num
+      }
+    })
+  }
+
+  resetAllFields() {
+    this.setState(prev => {
+      let arr = [...prev.info];
+      arr = arr.map(i => {
+        if(!Array.isArray(i) && i.show && !i.standAlone) {
+          i.text = ""
+          return i
+        }
+        else {
+          return i
+        }
+      })
+      return {
+        ...prev, info: arr
+      }
+    })
   }
 
   // runs everytime our skilledit input is changed
@@ -570,7 +631,8 @@ class App extends React.Component {
     str === "refCompany" ? "Company" :
     str === "skillEdit" ? "Edit Skill" :
     str === "project" ? "Link to project" :
-    str === "projectHeading" ? "Explain your project" :
+    str === "projectHeading" ? "Name of project" :
+    str === "projectSummary" ? "Explain your project (optional)" :
     str[0].toUpperCase() + str.slice(1).toLowerCase()
 }
 
@@ -768,7 +830,7 @@ class App extends React.Component {
 
   
 
-  // Runs everytime we add an item to either Skills, Experience, References or Education
+  // Runs everytime we add an item to either Skills, Experience, References, Projects or Education
   add(sec) {
     this.setState(prev => {
       let arr;
@@ -814,14 +876,19 @@ class App extends React.Component {
         return {...prev, references: arr}
       }
       else if(sec === "projects") {
-        arr = [...prev.projects];
-        arr.unshift({
-          summary: this.state.info[this.state.info.findIndex(k => k.name === "projectHeading")].text,
-          url: this.state.info[this.state.info.findIndex(k => k.name === "project")].text,
-          id: uniqid(),
-          show: false
-        })
-        return {...prev, projects: arr}
+        if(this.state.info[this.state.info.findIndex(k => k.name === "projectHeading")].text) {
+          arr = [...prev.projects];
+          arr.unshift({
+            summary: this.state.info[this.state.info.findIndex(k => k.name === "projectSummary")].text,
+            url: this.state.info[this.state.info.findIndex(k => k.name === "project")].text,
+            name: this.state.info[this.state.info.findIndex(k => k.name === "projectHeading")].text,
+            id: uniqid(),
+            show: false
+          })
+          return {...prev, projects: arr}
+        } else {
+          alert('"Name of Project" must not be empty')
+        }
       }
     });
   }
@@ -873,6 +940,12 @@ class App extends React.Component {
         return {...prev, references: ref}
       }
       else if(sec === "projects") {
+        this.setState(previous => {
+          return {
+            ...previous,
+            maxLength: value.length
+          }
+        })
         let ref = [...prev.projects];
         ref = ref.map(i => {
           return i.id === id ? {...i, [text]: value} : i
@@ -981,6 +1054,7 @@ class App extends React.Component {
             alternateReferences={this.alternateReferences}
             alternateExperience={this.alternateExperience}
             alternateProjects={this.alternateProjects}
+            updateMaxLength={this.updateMaxLength}
           />
           <div>
           </div>
@@ -1002,6 +1076,8 @@ class App extends React.Component {
               showSkillBoxEdit={this.showSkillBoxEdit}
               handleEditSkillChange={this.handleEditSkillChange}
               publishEdit={this.publishEdit}
+              updateMaxLength={this.updateMaxLength}
+              resetAllFields={this.resetAllFields}
             />
           }
         </div>

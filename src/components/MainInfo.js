@@ -82,6 +82,7 @@ export default class MainInfo extends React.Component {
                     showInput={this.props.showInput}
                     edit={this.props.edit}
                     alternateProjects={this.props.alternateProjects}
+                    updateMaxLength={this.props.updateMaxLength}
                 />
                 :
                 <div className="add-section" style={{background: "#EAE9E8"}}

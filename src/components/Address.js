@@ -21,7 +21,7 @@ export default class Address extends React.Component {
                 }}>REMOVE</p>
             </div>
             <i className="fa-solid fa-location-dot"></i>
-            <div style={{maxWidth: "100%", minWidth: "100%"}}>
+            <div className="address-holder" style={{maxWidth: "100%"}}>
                 <p className="street" style={styles}>{this.props.text('street') + ","}</p>
                 <p className="Suburb" style={styles}>{this.props.text('suburb') + ","}</p>
                 <p className="City" style={styles}>{this.props.text('city') + ","}</p>

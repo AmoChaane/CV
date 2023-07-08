@@ -10,11 +10,12 @@ export default class Form extends React.Component {
             if(i.show) {
                 return (
                     <div className="input-holder" key={i.id2}>
-                        <label htmlFor={i.name}>{this.props.capital(i.name)}</label>
+                        <label htmlFor={i.name}>{this.props.capital(i.name)} {i.name == "projectSummary" &&  <h6 style={{display: "inline-block", marginLeft: "15px"}}>{this.props.state.maxLength}/150</h6>}</label>
                         {
-                            i.name === "profile" || i.name === "description" || i.name === "profile2" || i.name === "profile3"? 
+                            i.name === "profile" || i.name === "description" || i.name === "profile2" || i.name === "profile3" || i.name == "projectSummary" ? 
                             <textarea 
                                 className="summary-textarea"
+                                maxLength={i.name == "projectSummary" && 150}
                                 // style={{width: i.name === "profile" ? "60vw" : ""}}
                                 name={i.name} 
                                 // id={i.name} 
@@ -111,9 +112,17 @@ export default class Form extends React.Component {
             });
         });
 
-        const inputs4 = ["summary", "url"].map(i => {
+        const inputs4 = ["name", "summary", "url"].map(i => {
             return this.props.state.projects.map(j => {
                 if(j.show) {
+                    if(i == "summary") {
+                        return (
+                            <div className="input-holder" key={j.id}>
+                                <label>{this.props.capital(i)} <h6 style={{display: "inline-block", marginLeft: "15px"}}>{this.props.state.maxLength}/150</h6></label>
+                                <textarea maxLength={150} name={i} key={i} value={this.props.val(i, j.id, "projects")} onChange={event => this.props.edit(event, j.id, i, "projects")} style={{height: "120px", minWidth: "100%", padding: "5px"}}/>
+                            </div>
+                        )
+                    }
                     return (
                         <div className="input-holder" key={j.id}>
                             <label>{this.props.capital(i)}</label>
@@ -184,7 +193,10 @@ export default class Form extends React.Component {
                                         this.props.submit()
                                         this.props.reset();
                                     }}>Add Skill</button> 
-                                    <button onClick={this.props.submit}>Close Edit</button>
+                                    <button onClick={() => {
+                                        this.props.submit()
+                                        this.props.resetAllFields();
+                                    }}>Close Edit</button>
                                 </div>
 
                                 :
@@ -195,7 +207,10 @@ export default class Form extends React.Component {
                                         this.props.publishEdit()
                                         this.props.submit();
                                     }}>Publish Edit</button> 
-                                    <button onClick={this.props.submit}>Close Edit</button>
+                                    <button onClick={() => {
+                                        this.props.submit()
+                                        this.props.resetAllFields();
+                                    }}>Close Edit</button>
                                 </div>
 
                                 :
@@ -207,7 +222,10 @@ export default class Form extends React.Component {
                                         this.props.submit()
                                         this.props.reset();
                                     }}>Add Education</button> 
-                                    <button onClick={this.props.submit}>Close Edit</button>
+                                    <button onClick={() => {
+                                        this.props.submit()
+                                        this.props.resetAllFields();
+                                    }}>Close Edit</button>
                                 </div>
 
                                 :
@@ -219,7 +237,10 @@ export default class Form extends React.Component {
                                         this.props.submit()
                                         this.props.reset();
                                     }}>Add Experience</button> 
-                                    <button onClick={this.props.submit}>Close Edit</button>
+                                    <button onClick={() => {
+                                        this.props.submit()
+                                        this.props.resetAllFields();
+                                    }}>Close Edit</button>
                                 </div>
                                 
                                 :
@@ -231,7 +252,10 @@ export default class Form extends React.Component {
                                         this.props.submit()
                                         this.props.reset();
                                     }}>Add Reference</button> 
-                                    <button onClick={this.props.submit}>Close Edit</button>
+                                    <button onClick={() => {
+                                        this.props.submit()
+                                        this.props.resetAllFields();
+                                    }}>Close Edit</button>
                                 </div>
 
                                 :
@@ -243,7 +267,10 @@ export default class Form extends React.Component {
                                         this.props.submit()
                                         this.props.reset();
                                     }}>Add Project</button> 
-                                    <button onClick={this.props.submit}>Close Edit</button>
+                                    <button onClick={() => {
+                                        this.props.submit()
+                                        this.props.resetAllFields();
+                                    }}>Close Edit</button>
                                 </div>
 
                                 :
@@ -252,7 +279,8 @@ export default class Form extends React.Component {
                                 
                                 <button onClick={() => {
                                     this.props.submit();
-                                    // inputs2 = null;
+                                    this.props.updateMaxLength(0)
+                                    this.props.resetAllFields();
                                 }}>Close Edit</button>
                             }
                         </div>

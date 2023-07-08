@@ -205,11 +205,17 @@ function Pdf(props) {
   
   const projectsData = state.projects.map(i => {
     return (
-      <View key={i.id} style={{marginLeft: "30px", display: "flex", flexDirection: "column"}}>
-        <Text style={styles.experienceText3}>{i.summary}</Text>
-        <View>
+      <View key={i.id} style={{marginLeft: "30px", display: "flex", flexDirection: "column", rowGap: "10px"}}>
+        <Text style={styles.experienceText3}>{i.name}</Text>
+        { i.summary &&
+          <View>
+            <Text style={styles.experienceText2}>{i.summary}</Text>
+          </View>
+        }
+        <View style={{display: "flex", flexDirection: "row", columnGap: "-45px"}}>
           {/* <Text style={styles.experienceText2}>{i.url}</Text> this one gives problems sometimes */}
-          <Link style={styles.experienceText2} src={i.url}>{i.url}</Link>
+          <Text style={styles.experienceText2}>&gt;&gt;</Text>
+          <Link style={styles.experienceText2} src={i.url}> {i.url}</Link>
         </View>
       </View>
     )

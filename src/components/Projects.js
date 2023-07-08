@@ -34,14 +34,14 @@ export default class Projects extends React.Component {
         //     )
 
         // })
-        const projects = this.props.projects.map(i => <ProjectsInfo info={i} key={i.id} delete={this.props.delete} id={i.id} edit={this.props.edit} click={this.props.click} showInput={this.props.showInput} showProjectsEdit={this.props.showProjectsEdit}/>);
+        const projects = this.props.projects.map(i => <ProjectsInfo info={i} key={i.id} delete={this.props.delete} id={i.id} edit={this.props.edit} click={this.props.click} showInput={this.props.showInput} showProjectsEdit={this.props.showProjectsEdit} updateMaxLength={this.props.updateMaxLength}/>);
         
         return <div className="references" style={{width: "100%"}}>
             <div style={{marginBottom: "3%"}}>
                     <div style={styles}>
                         <h3 className="h3" style={{paddingLeft: "5%"}}>PROJECTS</h3>
                         <p className="references-p p" style={styles2} onClick={() => {
-                                this.props.click(["projectHeading", "project"]);
+                                this.props.click(["projectHeading", "projectSummary", "project"]);
                                 this.props.showProjectBox();
                             }}>Add</p>
                         <p className="references-p p" style={styles2} onClick={() => {
