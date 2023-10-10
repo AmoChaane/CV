@@ -285,7 +285,7 @@ function Pdf(props) {
           <View style={styles.main}>
             {/* ------------------------Personal info------------------- */}
             <View style={{width: "100%", display: "flex", flexDirection: "row", columnGap: "30px"}}>
-              <View style={{height: "230px", width: "330px", position: "relative"}}>
+              <View style={{height: "270px", width: "330px", position: "relative"}}>
                 <Image src={state.image !== "https://gdurl.com/rc90/" ? state.image : profile2} style={{height: "100%", width: "100%", borderBottomLeftRadius: "8px", borderBottomRightRadius: '8px'}} />
                 <Text style={styles.dob}>{state.info.find(i => i.name === "age").text}</Text>
               </View>

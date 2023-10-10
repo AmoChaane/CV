@@ -141,10 +141,12 @@ export default class Form extends React.Component {
         }
 
         const styles2 = {
-            // minWidth: "600"
+            display: "flex",
+            flexDirection: "column",
+            border: "1px solid red"
         }
 
-        const styles3 = {...styles, ...styles2}
+        const styles3 = {...styles}
 
         const styles4 = {
             display: "grid",
@@ -173,7 +175,7 @@ export default class Form extends React.Component {
                     </div>
                     <div className="inputs" style={this.props.state.showExperienceBox ? styles : 
                     this.props.state.showExperienceEditBox || this.props.state.showReferencesEdit ? styles3 : this.props.state.showSummary ? styles4 : 
-                    inputs.filter(k => k).length >= 5 ? styles3 : null
+                    inputs.filter(k => k).length >= 5 ? styles3 : this.props.state.showProjectsEdit ? styles2 : null
                     }>
                         {this.props.state.showExperienceEditBox ? inputs2 : 
                         this.props.state.showReferencesEdit ? inputs3 :

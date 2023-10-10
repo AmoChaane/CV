@@ -429,7 +429,26 @@ class App extends React.Component {
   }
 
   // componentDidUpdate(prevProps, prevState) {
-  //   console.log(this.state.info[this.state.info.findIndex(k => k.name === "skillEdit")]);
+  //   // Check if the state has changed
+  //   if (this.state !== prevState) {
+  //     // Save the state object to localStorage
+  //     localStorage.setItem('myState', JSON.stringify({
+  //       info: this.state.info,
+  //       skils: this.state.info[this.state.info.length - 1],
+  //       experience: this.state.experience,
+  //       references: this.state.references,
+  //       education: this.state.education,
+  //       projects: this.state.projects,
+  //     }));
+  //   }
+  // }
+
+  // componentDidMount() {
+  //   // Retrieve the state object from localStorage when the component mounts
+  //   const savedState = localStorage.getItem('myState');
+  //   if (savedState) {
+  //     this.setState(JSON.parse(savedState));
+  //   }
   // }
 
   // This function runs everytime we edit an input box
